@@ -1,4 +1,12 @@
 # RGB Keyboard V2.1版本
+
+## Profile：
+使用Pro micro（ATMEGA32U4）作为主控制作的20键全宏定义键盘，具有RGB功能，单引脚控制WS2811/WS2812 RGB灯带，可以定义矩阵键盘及RGB控制IO。
+
+具有三个不同定义的按键层，四个平行线程来分别处理按键、宏、RGB灯效以及保留功能按键。每层均可定义普通按键以及宏按键。
+
+可以使用IIC总线与SSD1306控制的OLED显示屏通信，实现键盘状态显示。
+
 ## Library：
 1.	HID-Project库：键盘USB功能主要支撑以及扩展
 https://github.com/NicoHood/HID
@@ -47,3 +55,7 @@ https://github.com/fabriceo/SCoop
 7.	layer2层可定义按住循环宏或单次宏
 8.	layer1层仅可定义按键，为开机默认层
 9.	用户可以设置LED灯效，并且该灯效掉电可保存，具有至少100，000次更改寿命
+
+## Layer1 & layer2层普通按键定义方式
+若要定义layer1和layer2层的按键，只需打开*keydefine.cpp*，对照*键值表.txt*文件更改数组即可。
+**注意：17号位置定义的普通按键无效，因其已经被FN多功能键强制占用**
