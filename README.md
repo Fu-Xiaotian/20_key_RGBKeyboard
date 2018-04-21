@@ -1,5 +1,5 @@
 # RGB Keyboard V2.1版本
-## 使用的库：
+## Library：
 1.	HID-Project库：键盘USB功能主要支撑以及扩展
 https://github.com/NicoHood/HID
 2.	Keypad库：为矩阵键盘识别提供一些支持
@@ -12,25 +12,31 @@ https://github.com/adafruit/Adafruit_NeoPixel
 https://github.com/greiman/SSD1306Ascii
 7.	SchedulerARMAVR库：Scoop库中为AVR单片机设计的多线程任务调度器库
 https://github.com/fabriceo/SCoop
-## 特性:
+
+## Version History:
 ### V2.1
 1.	修正了抬起其他按键使得当前按键宏失效的问题
+
 ### V2.0
 1.	修改按键宏使能方案，17号按键在layer1&2层用作FN多功能组合键
 2.	Layer1层按住FN键将使得下一次按下被引导进宏，宏也可以发送一个普通按键或者字符串
 3.	Layer2层宏定义不再需要将按键定义为KEY_RESERVED，只需短按FN键即可起用
 4.	为FN按键状态添加OLED显示
+
 ### V1.3
 1.	添加了显示函数，可以通过简单修改一个变量值来控制最后一行显示的内容
 2.	添加了新的显示更新方式，当显示控制变量改变时刷新屏幕
+
 ### V1.2
 1.	修正LED灯效切换时延时的BUG
 2.	添加LED亮度多级调节
 3.	更换了灯效一和二
 4.	优化了用户灯光设置存储
 5.	小幅优化代码效率
+
 ### V 1.1
 1.  删除了无效的代码，精简逻辑减少资源消耗
+
 ### V 1.0：
 1.	使用Scoop库设计四个合作多线程
 2.	可以定义死循环宏而不影响其他任务
