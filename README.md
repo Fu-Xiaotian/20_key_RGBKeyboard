@@ -58,4 +58,5 @@ https://github.com/fabriceo/SCoop
 
 ## Layer1 & layer2层普通按键定义方式
 若要定义layer1和layer2层的按键，只需打开*keydefine.cpp*，对照*键值表.txt*文件更改数组即可。
+
 **注意：17号位置定义的普通按键无效，因其已经被FN多功能键强制占用**
