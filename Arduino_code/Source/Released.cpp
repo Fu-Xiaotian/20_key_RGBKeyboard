@@ -1,4 +1,4 @@
-#include "RGBkeyboard.h"
+#include "RGBKeyboard.h"
 
 /**
  * 按键抬起事件响应函数
@@ -13,13 +13,13 @@ void Key_1_Released(void)
 			case 0 :
 				if(macro_flag == 1)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[0]);
+				NKROKeyboard.release(key_layer_1[0]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[0]);
+					NKROKeyboard.release(key_layer_2[0]);
 			break;
 			case 2 :
 				
@@ -37,13 +37,13 @@ void Key_2_Released(void)
 			case 0 :
 				if(macro_flag == 2)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[1]);
+				NKROKeyboard.release(key_layer_1[1]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[1]);
+					NKROKeyboard.release(key_layer_2[1]);
 			break;
 			case 2 :
 				
@@ -61,13 +61,13 @@ void Key_3_Released(void)
 			case 0 :
 				if(macro_flag == 3)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[2]);
+				NKROKeyboard.release(key_layer_1[2]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[2]);
+					NKROKeyboard.release(key_layer_2[2]);
 			break;
 			case 2 :
 				
@@ -85,13 +85,13 @@ void Key_4_Released(void)
 			case 0 :
 				if(macro_flag == 4)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[3]);
+				NKROKeyboard.release(key_layer_1[3]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[3]);
+					NKROKeyboard.release(key_layer_2[3]);
 			break;
 			case 2 :
 				
@@ -109,13 +109,13 @@ void Key_5_Released(void)
 			case 0 :
 				if(macro_flag == 5)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[4]);
+				NKROKeyboard.release(key_layer_1[4]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[4]);
+					NKROKeyboard.release(key_layer_2[4]);
 			break;
 			case 2 :
 				
@@ -133,13 +133,13 @@ void Key_6_Released(void)
 			case 0 :
 				if(macro_flag == 6)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[5]);
+				NKROKeyboard.release(key_layer_1[5]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[5]);
+					NKROKeyboard.release(key_layer_2[5]);
 			break;
 			case 2 :
 				
@@ -158,13 +158,13 @@ void Key_7_Released(void)
 				if(macro_flag == 7)
 				OLED_flag = 0;
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[6]);
+				NKROKeyboard.release(key_layer_1[6]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[6]);
+					NKROKeyboard.release(key_layer_2[6]);
 			break;
 			case 2 :
 				
@@ -182,13 +182,13 @@ void Key_8_Released(void)
 			case 0 :
 				if(macro_flag == 8)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[7]);
+				NKROKeyboard.release(key_layer_1[7]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[7]);
+					NKROKeyboard.release(key_layer_2[7]);
 			break;
 			case 2 :
 				
@@ -206,13 +206,13 @@ void Key_9_Released(void)
 			case 0 :
 				if(macro_flag == 9)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[8]);
+				NKROKeyboard.release(key_layer_1[8]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[8]);
+					NKROKeyboard.release(key_layer_2[8]);
 			break;
 			case 2 :
 				
@@ -230,13 +230,13 @@ void Key_10_Released(void)
 			case 0 :
 				if(macro_flag == 10)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[9]);
+				NKROKeyboard.release(key_layer_1[9]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[9]);
+					NKROKeyboard.release(key_layer_2[9]);
 			break;
 			case 2 :
 				
@@ -254,13 +254,13 @@ void Key_11_Released(void)
 			case 0 :
 				if(macro_flag == 11)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[10]);
+				NKROKeyboard.release(key_layer_1[10]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[10]);
+					NKROKeyboard.release(key_layer_2[10]);
 			break;
 			case 2 :
 				
@@ -278,13 +278,13 @@ void Key_12_Released(void)
 			case 0 :
 				if(macro_flag == 12)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[11]);
+				NKROKeyboard.release(key_layer_1[11]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[11]);
+					NKROKeyboard.release(key_layer_2[11]);
 			break;
 			case 2 :
 				
@@ -302,13 +302,13 @@ void Key_13_Released(void)
 			case 0 :
 				if(macro_flag == 13)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[12]);
+				NKROKeyboard.release(key_layer_1[12]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[12]);
+					NKROKeyboard.release(key_layer_2[12]);
 			break;
 			case 2 :
 				
@@ -326,13 +326,13 @@ void Key_14_Released(void)
 			case 0 :
 				if(macro_flag == 14)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[13]);
+				NKROKeyboard.release(key_layer_1[13]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[13]);
+					NKROKeyboard.release(key_layer_2[13]);
 			break;
 			case 2 :
 				
@@ -350,13 +350,13 @@ void Key_15_Released(void)
 			case 0 :
 				if(macro_flag == 15)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[14]);
+				NKROKeyboard.release(key_layer_1[14]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[14]);
+					NKROKeyboard.release(key_layer_2[14]);
 			break;
 			case 2 :
 				
@@ -374,13 +374,13 @@ void Key_16_Released(void)
 			case 0 :
 				if(macro_flag == 16)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[15]);
+				NKROKeyboard.release(key_layer_1[15]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[15]);
+					NKROKeyboard.release(key_layer_2[15]);
 			break;
 			case 2 :
 				
@@ -418,13 +418,13 @@ void Key_18_Released(void)
 			case 0 :
 				if(macro_flag == 18)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[17]);
+				NKROKeyboard.release(key_layer_1[17]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[17]);
+					NKROKeyboard.release(key_layer_2[17]);
 			break;
 			case 2 :
 				//媒体键占用
@@ -442,13 +442,13 @@ void Key_19_Released(void)
 			case 0 :
 				if(macro_flag == 19)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[18]);
+				NKROKeyboard.release(key_layer_1[18]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[18]);
+					NKROKeyboard.release(key_layer_2[18]);
 			break;
 			case 2 :
 				//媒体键占用
@@ -466,13 +466,13 @@ void Key_20_Released(void)
 			case 0 :
 				if(macro_flag == 20)
 				macro_flag = 0;
-				Keyboard.release(key_layer_1[19]);
+				NKROKeyboard.release(key_layer_1[19]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 0;
 				else
-					Keyboard.release(key_layer_2[19]);
+					NKROKeyboard.release(key_layer_2[19]);
 			break;
 			case 2 :
 				//媒体键占用

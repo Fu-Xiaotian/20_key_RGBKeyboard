@@ -1,4 +1,4 @@
-#include "RGBkeyboard.h"
+#include "RGBKeyboard.h"
 
 bool FN_flag = false;
 
@@ -17,13 +17,13 @@ void Key_1_Preased(void)
 				if(FN_flag)
 					macro_flag = 1;
 				else
-					Keyboard.press(key_layer_1[0]); //处理按键按下事件
+					NKROKeyboard.press(key_layer_1[0]); //处理按键按下事件
 			break;
 			case 1 : //按键层二
 				if(FN_flag)
 					macro_flag = 1; //如果FN曾被按下过则使能此按键的宏
 				else
-					Keyboard.press(key_layer_2[0]); //否则处理相应按键
+					NKROKeyboard.press(key_layer_2[0]); //否则处理相应按键
 			break;
 			case 2 : //按键层三
 				if(macro_flag == 0) //切换按键宏标志
@@ -51,13 +51,13 @@ void Key_2_Preased(void)
 				if(FN_flag)
 					macro_flag = 2;
 				else
-				Keyboard.press(key_layer_1[1]);
+				NKROKeyboard.press(key_layer_1[1]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 2;
 				else
-					Keyboard.press(key_layer_2[1]);
+					NKROKeyboard.press(key_layer_2[1]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -85,13 +85,13 @@ void Key_3_Preased(void)
 				if(FN_flag)
 					macro_flag = 3;
 				else
-				Keyboard.press(key_layer_1[2]);
+				NKROKeyboard.press(key_layer_1[2]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 3;
 				else
-					Keyboard.press(key_layer_2[2]);
+					NKROKeyboard.press(key_layer_2[2]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -119,13 +119,13 @@ void Key_4_Preased(void)
 				if(FN_flag)
 					macro_flag = 4;
 				else
-				Keyboard.press(key_layer_1[3]);
+				NKROKeyboard.press(key_layer_1[3]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 4;
 				else
-					Keyboard.press(key_layer_2[3]);
+					NKROKeyboard.press(key_layer_2[3]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -153,13 +153,13 @@ void Key_5_Preased(void)
 				if(FN_flag)
 					macro_flag = 5;
 				else
-				Keyboard.press(key_layer_1[4]);
+				NKROKeyboard.press(key_layer_1[4]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 5;
 				else
-					Keyboard.press(key_layer_2[4]);
+					NKROKeyboard.press(key_layer_2[4]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -188,13 +188,13 @@ void Key_6_Preased(void)
 				if(FN_flag)
 					macro_flag = 6;
 				else
-				Keyboard.press(key_layer_1[5]);
+				NKROKeyboard.press(key_layer_1[5]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 6;
 				else
-					Keyboard.press(key_layer_2[5]);
+					NKROKeyboard.press(key_layer_2[5]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -223,13 +223,13 @@ void Key_7_Preased(void)
 				if(FN_flag)
 					macro_flag = 7;
 				else
-				Keyboard.press(key_layer_1[6]);
+				NKROKeyboard.press(key_layer_1[6]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 7;
 				else
-					Keyboard.press(key_layer_2[6]);
+					NKROKeyboard.press(key_layer_2[6]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -258,13 +258,13 @@ void Key_8_Preased(void)
 				if(FN_flag)
 					macro_flag = 8;
 				else
-				Keyboard.press(key_layer_1[7]);
+				NKROKeyboard.press(key_layer_1[7]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 8;
 				else
-					Keyboard.press(key_layer_2[7]);
+					NKROKeyboard.press(key_layer_2[7]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -293,13 +293,13 @@ void Key_9_Preased(void)
 				if(FN_flag)
 					macro_flag = 9;
 				else
-				Keyboard.press(key_layer_1[8]);
+				NKROKeyboard.press(key_layer_1[8]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 9;
 				else
-					Keyboard.press(key_layer_2[8]);
+					NKROKeyboard.press(key_layer_2[8]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -327,13 +327,13 @@ void Key_10_Preased(void)
 				if(FN_flag)
 					macro_flag = 10;
 				else
-				Keyboard.press(key_layer_1[9]);
+				NKROKeyboard.press(key_layer_1[9]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 10;
 				else
-					Keyboard.press(key_layer_2[9]);
+					NKROKeyboard.press(key_layer_2[9]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -361,13 +361,13 @@ void Key_11_Preased(void)
 				if(FN_flag)
 					macro_flag = 11;
 				else
-				Keyboard.press(key_layer_1[10]);
+				NKROKeyboard.press(key_layer_1[10]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 11;
 				else
-					Keyboard.press(key_layer_2[10]);
+					NKROKeyboard.press(key_layer_2[10]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -395,13 +395,13 @@ void Key_12_Preased(void)
 				if(FN_flag)
 					macro_flag = 12;
 				else
-				Keyboard.press(key_layer_1[11]);
+				NKROKeyboard.press(key_layer_1[11]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 12;
 				else
-					Keyboard.press(key_layer_2[11]);
+					NKROKeyboard.press(key_layer_2[11]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -429,13 +429,13 @@ void Key_13_Preased(void)
 				if(FN_flag)
 					macro_flag = 13;
 				else
-				Keyboard.press(key_layer_1[12]);
+				NKROKeyboard.press(key_layer_1[12]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 13;
 				else
-					Keyboard.press(key_layer_2[12]);
+					NKROKeyboard.press(key_layer_2[12]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -463,13 +463,13 @@ void Key_14_Preased(void)
 				if(FN_flag)
 					macro_flag = 14;
 				else
-				Keyboard.press(key_layer_1[13]);
+				NKROKeyboard.press(key_layer_1[13]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 14;
 				else
-					Keyboard.press(key_layer_2[13]);
+					NKROKeyboard.press(key_layer_2[13]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -497,13 +497,13 @@ void Key_15_Preased(void)
 				if(FN_flag)
 					macro_flag = 15;
 				else
-				Keyboard.press(key_layer_1[14]);
+				NKROKeyboard.press(key_layer_1[14]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 15;
 				else
-					Keyboard.press(key_layer_2[14]);
+					NKROKeyboard.press(key_layer_2[14]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -531,13 +531,13 @@ void Key_16_Preased(void)
 				if(FN_flag)
 					macro_flag = 16;
 				else
-				Keyboard.press(key_layer_1[15]);
+				NKROKeyboard.press(key_layer_1[15]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 16;
 				else
-					Keyboard.press(key_layer_2[15]);
+					NKROKeyboard.press(key_layer_2[15]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -593,13 +593,13 @@ void Key_18_Preased(void)
 				if(FN_flag)
 					macro_flag = 18;
 				else
-				Keyboard.press(key_layer_1[17]);
+				NKROKeyboard.press(key_layer_1[17]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 18;
 				else
-					Keyboard.press(key_layer_2[17]);
+					NKROKeyboard.press(key_layer_2[17]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -627,13 +627,13 @@ void Key_19_Preased(void)
 				if(FN_flag)
 					macro_flag = 19;
 				else
-				Keyboard.press(key_layer_1[18]);
+				NKROKeyboard.press(key_layer_1[18]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 19;
 				else
-					Keyboard.press(key_layer_2[18]);
+					NKROKeyboard.press(key_layer_2[18]);
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -661,13 +661,13 @@ void Key_20_Preased(void)
 				if(FN_flag)
 					macro_flag = 20;
 				else
-				Keyboard.press(key_layer_1[19]);
+				NKROKeyboard.press(key_layer_1[19]);
 			break;
 			case 1 :
 				if(FN_flag)
 					macro_flag = 20;
 				else
-					Keyboard.press(key_layer_2[19]);
+					NKROKeyboard.press(key_layer_2[19]);
 			break;
 			case 2 :
 				if(macro_flag == 0)

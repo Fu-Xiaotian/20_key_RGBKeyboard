@@ -24,7 +24,9 @@ void setup()
 	pinMode(MODE_KEY,INPUT);
 	LED_Init();	//初始化RGB
 	OLED_Init(); //初始化OLED
-	Keyboard.begin(); //初始化键盘
+	NKROKeyboard.begin(); //初始化键盘
+	Consumer.begin(); //初始化多媒体控制器
+	BootKeyboard.begin(); //初始化锁定键状态控制器
 	strip.setBrightness(BRIGHTNESS);
 
 	systime = millis();
@@ -87,6 +89,7 @@ void button(void)
 {
 	if(key_flag <25 &&key_flag >1)
 	{
+		OLED_flag = 0;
 		macro_flag = 0;
 		FN_flag = false;
 		key_flag = 0;
@@ -96,7 +99,8 @@ void button(void)
 			key_state = 0;
 		}
 		OLED_Display();
-		Keyboard.releaseAll();
+		NKROKeyboard.releaseAll();
+		Consumer.releaseAll();
 	}
 	else if(key_flag >= 25)
 	{
@@ -110,7 +114,8 @@ void button(void)
 			EEPROM.put(LED_BRIGHTNESS_ADD, led_brightness);
 		}
 		OLED_Display();
-		Keyboard.releaseAll();
+		NKROKeyboard.releaseAll();
+		Consumer.releaseAll();
 	}
 }
 

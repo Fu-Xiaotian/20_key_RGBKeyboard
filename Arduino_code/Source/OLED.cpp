@@ -4,6 +4,7 @@
 int OLED_flag = 0;
 int old_OLED_flag = 0;
 bool old_FN_flag = false;
+uint8_t old_lock_flag = 0;
 
 //OLED驱动类
 SSD1306AsciiWire oled;
@@ -25,14 +26,23 @@ void OLED_Init(void)
  */
 void OLED_upload(void)
 {
+	//判断OLED_flag变动
 	if(OLED_flag != old_OLED_flag)
 	{
 		old_OLED_flag = OLED_flag;
 		OLED_Display();
 	}
+	//判断FN_flag变动
 	if(FN_flag != old_FN_flag)
 	{
 		old_FN_flag = FN_flag;
+		OLED_Display();
+	}
+	//判断LOCK键状态改动
+	uint8_t lock_flag = BootKeyboard.getLeds();
+	if(lock_flag != old_lock_flag)
+	{
+		old_lock_flag = lock_flag;
 		OLED_Display();
 	}
 }
@@ -43,12 +53,27 @@ void OLED_upload(void)
 void OLED_Display(void)
 {
 	oled.clear();
-	oled.println("SYSTEM ONLINE");
-	oled.print("LED : ");
+	if(old_lock_flag & LED_CAPS_LOCK)
+	{
+		oled.print("CAPS:ON ");
+	}
+	else
+	{
+		oled.print("CAPS:OFF");
+	}
+	if(old_lock_flag & LED_NUM_LOCK)
+	{
+		oled.println(" NUM :ON");
+	}
+	else
+	{
+		oled.println(" NUM :OFF");
+	}
+	oled.print("LED :");
 	oled.print(led_layer + 1);
-	oled.print("   BRI:");
+	oled.print("   BRI :");
 	oled.println(led_brightness/16);
-	oled.print("KEY : ");
+	oled.print("KEY :");
 	if(FN_flag)
 	{
 		oled.print(key_state + 1);
@@ -70,6 +95,7 @@ void OLED_Display(void)
 				oled.println("AUTO HUAKAN");
 			break;
 			case 2 :
+				oled.println("WUKONG 3 RUNING");
 			break;
 		}
 	}
