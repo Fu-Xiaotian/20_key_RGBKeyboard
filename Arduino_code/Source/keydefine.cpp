@@ -1,4 +1,4 @@
-#include "RGBkeyboard.h"
+#include "RGBKeyboard.h"
 
 KeyboardKeycode key_layer_1[20] = {
 	KEY_1,KEY_2,KEY_3,KEY_4,

@@ -1,4 +1,4 @@
-#include "RGBkeyboard.h"
+#include "RGBKeyboard.h"
 
 //宏标志，0为无宏激活，1~20为对应按键宏激活
 int macro_flag = 0;
