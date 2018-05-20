@@ -1,7 +1,7 @@
 #include "RGBkeyboard.h"
 
-//非阻塞延时记录变量
-unsigned long systime = 0;
+//最后一次按键事件系统时间记录变量，用于计算键盘空闲时间
+unsigned long last_press_systime = 0;
 //独立按键识别变量
 int old_key_flag = 0;
 int key_flag = 0;
@@ -11,6 +11,8 @@ int key_state = 0;
 int led_state = 0;
 //灯光层状态变量
 int led_layer = 0;
+//灯光显示休眠标志
+bool oled_sleep = false;
 
 /**
  * @brief      初始化
@@ -24,10 +26,12 @@ void setup()
 	pinMode(MODE_KEY,INPUT);
 	LED_Init();	//初始化RGB
 	OLED_Init(); //初始化OLED
-	Keyboard.begin(); //初始化键盘
+	NKROKeyboard.begin(); //初始化键盘
+	Consumer.begin(); //初始化多媒体控制器
+	BootKeyboard.begin(); //初始化主机状态控制器
 	strip.setBrightness(BRIGHTNESS);
 
-	systime = millis();
+	last_press_systime = millis(); //初始化系统时间
 
 	EEPROM.get(LED_LAYER_ADD, led_layer); //读取用户设置
 	EEPROM.get(LED_BRIGHTNESS_ADD, led_brightness);
@@ -66,27 +70,13 @@ void loop2()
 }
 
 /**
- * 独立按键扫描用非阻塞延时
- */
-bool __delay_ms(unsigned long t)
-{
-	unsigned long time = millis();
-	if(time - systime > t)
-		{
-			systime = time;
-			return true;
-		}
-	else
-		{return false;}
-}
-
-/**
  * 独立按键事件处理函数
  */
 void button(void)
 {
 	if(key_flag <25 &&key_flag >1)
 	{
+		OLED_flag = 0;
 		macro_flag = 0;
 		FN_flag = false;
 		key_flag = 0;
@@ -96,7 +86,8 @@ void button(void)
 			key_state = 0;
 		}
 		OLED_Display();
-		Keyboard.releaseAll();
+		NKROKeyboard.releaseAll();
+		Consumer.releaseAll();
 	}
 	else if(key_flag >= 25)
 	{
@@ -110,7 +101,8 @@ void button(void)
 			EEPROM.put(LED_BRIGHTNESS_ADD, led_brightness);
 		}
 		OLED_Display();
-		Keyboard.releaseAll();
+		NKROKeyboard.releaseAll();
+		Consumer.releaseAll();
 	}
 }
 
@@ -119,6 +111,26 @@ void button(void)
  */
 void LED(void)
 {
+	if(millis() - last_press_systime >= 300000)
+		{
+			oled_sleep = true;
+			led_brightness = 0;
+			brightness_upload();
+			All_bright(255, 255, 255);
+			OLED_Display();
+			while(1)
+			{
+				if(millis() - last_press_systime <= 300000)
+				{
+					oled_sleep = false;
+					OLED_Display();
+					EEPROM.get(LED_BRIGHTNESS_ADD, led_brightness);
+					brightness_upload();
+					break;
+				}
+				Scheduler.delay(20);
+			}
+		}
 	//灯效
 	if(led_layer == 0)
 		{All_bright(255, 255, 255);}
@@ -137,17 +149,16 @@ void LED(void)
 void MODE(void)
 {
 	//独立按键识别函数
-	if(__delay_ms(20))
-	{
-		int flag = digitalRead(MODE_KEY);
-		if (flag == 0)
-	  		{old_key_flag ++;}
-	  	else
-	  		{
-	  			if(old_key_flag != 0)
-	  				{key_flag = old_key_flag;}
-	  			old_key_flag = 0;
-	  		}
-	}
+	
+	int flag = digitalRead(MODE_KEY);
+	if (flag == 0)
+	  	{old_key_flag ++;}
+	else
+		{
+			if(old_key_flag != 0)
+				{key_flag = old_key_flag;}
+			old_key_flag = 0;
+		}
+	Scheduler.delay(20);
 	yield();
 }

@@ -35,8 +35,8 @@
  */
 void LED(void);
 void MODE(void);
-bool __delay_ms(unsigned long t);
 void button(void);
+void loop2(void);
 
 //define
 #define HOLD_DELAY 1000 //定义按住重复的间隔，全键盘共用
@@ -57,5 +57,9 @@ extern int key_state;
 extern int led_state;
 //灯光层状态变量
 extern int led_layer;
+//最后一次按键事件系统时间记录变量，用于计算键盘空闲时间
+extern unsigned long last_press_systime;
+//灯光显示休眠标志
+extern bool oled_sleep;
 
 #endif

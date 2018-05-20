@@ -1,4 +1,4 @@
-# RGB Keyboard V2.1版本
+# RGB Keyboard V2.2版本
 
 ## Profile：
 使用Pro micro（ATMEGA32U4）作为主控制作的20键全宏定义键盘，具有RGB功能，单引脚控制WS2811/WS2812 RGB灯带，可以定义矩阵键盘及RGB控制IO。
@@ -22,6 +22,11 @@ https://github.com/greiman/SSD1306Ascii
 https://github.com/fabriceo/SCoop
 
 ## Version History:
+
+### V2.2
+1.	优化了一部分代码体积
+2.	添加了五分钟无动作自动关闭LED节能以及OLED保护功能
+
 ### V2.1
 1.	修正了抬起其他按键使得当前按键宏失效的问题
 
@@ -57,5 +62,65 @@ https://github.com/fabriceo/SCoop
 9.	用户可以设置LED灯效，并且该灯效掉电可保存，具有至少100，000次更改寿命
 
 ## Layer1 & layer2层普通按键定义方式
+
 若要定义layer1和layer2层的按键，只需打开*keydefine.cpp*，对照*键值表.txt*文件更改数组即可。
+
 **注意：17号位置定义的普通按键无效，因其已经被FN多功能键强制占用**
+
+#变量与硬件编号定义
+###按键号定义：
+按键号1~20，自左到右，自上到下，Z字型排列。
+
+###层变量定义：
+*key_state*值为0~2，使用mode按键自加，由*RGBkeyboard.h*文件中MAX_KEY_LAYER宏定义限定最大值为2。
+
+###宏使能标志定义：
+*macro_flag*变量定义了宏使能标志，此值用于在键盘扫描线程和宏专用线程中传递某个按键是否应当启用宏。取值0~20，值0禁用宏，1~20使能对应按键的宏。因此**同时只能激活一个宏！！**
+
+*FN_flag*变量定义了FN键使能标志，用于在FN键按下时改变键盘行为。
+
+###LED号定义：
+LED号0~19，与按键号同样排序。
+
+###LED相关变量：
+*led_state*取值为0或1，指示键盘模式（0）或者灯效设置模式（1）。
+
+*led_layer*取值为int，目前定义为0，1，2，3，分别代表四种灯效。
+
+#宏定义
+若需要定义按键宏，则需要编辑*HOLD.cpp*文件，当按键层一二中FN按键被按下时，其余对应按键按下或者按键层三对应按键按下后，程序会开始执行对用的*Key_n_HOLD*函数。由此可见，程序逻辑中三个按键层使用了同一个函数来执行宏功能，因此在配置宏的时候**必须使用if(key_state == 层数-1)逻辑来限制宏在那一层执行**
+
+本程序在头文件中定义了RUN_ONCE语句以便于定义宏时直接设定宏的单次运行，为保证程序安全**所有只执行一次的按键宏都应在宏最后或宏开始使用本语句**
+
+程序逻辑在设计时，按键事件仅作为进入宏函数的引导，尽管宏运行中可以继续识别宏按键，宏函数也必须执行一遍以后才可以重新检测宏引导标志进入新的宏函数。因此若不在每次宏结束后清空宏函数，可能会导致任务堆积和极高的键盘延时。FN键采用了与宏引导类似的设计，当FN键把按键引导进去宏后，FN键便不起效了。
+
+同时因为上述程序设计，程序需要特别的结构来实现普通按键的按下与抬起功能，下面的例子介绍了实现方法。这个结构也带来一定的优点，使得宏具备了自动重复功能，而不必反复按下按键来激活宏。
+
+###例子：
+``` cpp
+void Key_20_HOLD(void)
+{
+	if(key_state == 0) //第一层，ESC键按下抬起组合
+	{
+		NKROKeyboard.press(KEY_ESC);
+		while(macro_flag == 20)
+			{Scheduler.delay(50);}
+		NKROKeyboard.release(KEY_ESC);
+	}
+	if(key_state == 1) //第二层，当按键按下时重复发送‘e’，此时无需按住FN键
+	{
+		while(macro_flag == 20)
+		{
+			NKROKeyboard.press(KEY_E);
+			NKROKeyboard.release(KEY_E);
+		}
+	}
+	if(key_state == 2) //第三层，按下按键保存文件，单次运行
+	{
+		NKROKeyboard.press(KEY_LEFT_CTRL);
+		NKROKeyboard.press(KEY_S);
+		NKROKeyboard.releaseAll();
+		RUN_ONCE;
+	}
+}
+```

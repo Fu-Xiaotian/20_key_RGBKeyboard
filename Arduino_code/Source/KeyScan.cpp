@@ -57,6 +57,10 @@ void key_scan(void)
 	if(kpd.getKeys())
 	{
 		/*
+		记录最后一次按键事件发生的时间
+		 */
+		last_press_systime = millis();
+		/*
 		扫描按键按下
 		 */
 		if(KeyisPressed(1))
