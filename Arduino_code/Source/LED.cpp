@@ -1,4 +1,4 @@
-#include "RGBKeyboard.h"
+#include "RGBkeyboard.h"
 
 unsigned long led_delay_time = 0;
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(20, 10, NEO_RGB + NEO_KHZ800);
