@@ -9,7 +9,7 @@ void Key_1_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[0] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -43,7 +43,7 @@ void Key_2_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[1] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -51,7 +51,7 @@ void Key_2_Preased(void)
 				if(FN_flag)
 					macro_flag = 2;
 				else
-				NKROKeyboard.press(key_layer_1[1]);
+					NKROKeyboard.press(key_layer_1[1]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -77,7 +77,7 @@ void Key_3_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[2] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -85,7 +85,7 @@ void Key_3_Preased(void)
 				if(FN_flag)
 					macro_flag = 3;
 				else
-				NKROKeyboard.press(key_layer_1[2]);
+					NKROKeyboard.press(key_layer_1[2]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -111,7 +111,7 @@ void Key_4_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[3] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -119,7 +119,7 @@ void Key_4_Preased(void)
 				if(FN_flag)
 					macro_flag = 4;
 				else
-				NKROKeyboard.press(key_layer_1[3]);
+					NKROKeyboard.press(key_layer_1[3]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -145,7 +145,7 @@ void Key_5_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[4] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -153,7 +153,7 @@ void Key_5_Preased(void)
 				if(FN_flag)
 					macro_flag = 5;
 				else
-				NKROKeyboard.press(key_layer_1[4]);
+					NKROKeyboard.press(key_layer_1[4]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -180,7 +180,7 @@ void Key_6_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[5] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -188,7 +188,7 @@ void Key_6_Preased(void)
 				if(FN_flag)
 					macro_flag = 6;
 				else
-				NKROKeyboard.press(key_layer_1[5]);
+					NKROKeyboard.press(key_layer_1[5]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -215,15 +215,18 @@ void Key_7_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[6] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
 			case 0 :
 				if(FN_flag)
-					macro_flag = 7;
+					{
+						OLED_flag = 1;
+						macro_flag = 7;
+					}
 				else
-				NKROKeyboard.press(key_layer_1[6]);
+					NKROKeyboard.press(key_layer_1[6]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -250,7 +253,7 @@ void Key_8_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[7] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -258,7 +261,7 @@ void Key_8_Preased(void)
 				if(FN_flag)
 					macro_flag = 8;
 				else
-				NKROKeyboard.press(key_layer_1[7]);
+					NKROKeyboard.press(key_layer_1[7]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -285,7 +288,7 @@ void Key_9_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[8] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -293,7 +296,7 @@ void Key_9_Preased(void)
 				if(FN_flag)
 					macro_flag = 9;
 				else
-				NKROKeyboard.press(key_layer_1[8]);
+					NKROKeyboard.press(key_layer_1[8]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -319,7 +322,7 @@ void Key_10_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[9] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -327,7 +330,7 @@ void Key_10_Preased(void)
 				if(FN_flag)
 					macro_flag = 10;
 				else
-				NKROKeyboard.press(key_layer_1[9]);
+					NKROKeyboard.press(key_layer_1[9]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -353,7 +356,7 @@ void Key_11_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[10] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -361,7 +364,7 @@ void Key_11_Preased(void)
 				if(FN_flag)
 					macro_flag = 11;
 				else
-				NKROKeyboard.press(key_layer_1[10]);
+					NKROKeyboard.press(key_layer_1[10]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -387,7 +390,7 @@ void Key_12_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[11] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -395,7 +398,7 @@ void Key_12_Preased(void)
 				if(FN_flag)
 					macro_flag = 12;
 				else
-				NKROKeyboard.press(key_layer_1[11]);
+					NKROKeyboard.press(key_layer_1[11]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -421,7 +424,7 @@ void Key_13_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[12] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -429,7 +432,7 @@ void Key_13_Preased(void)
 				if(FN_flag)
 					macro_flag = 13;
 				else
-				NKROKeyboard.press(key_layer_1[12]);
+					NKROKeyboard.press(key_layer_1[12]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -455,7 +458,7 @@ void Key_14_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[13] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -463,7 +466,7 @@ void Key_14_Preased(void)
 				if(FN_flag)
 					macro_flag = 14;
 				else
-				NKROKeyboard.press(key_layer_1[13]);
+					NKROKeyboard.press(key_layer_1[13]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -489,7 +492,7 @@ void Key_15_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[14] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -497,7 +500,7 @@ void Key_15_Preased(void)
 				if(FN_flag)
 					macro_flag = 15;
 				else
-				NKROKeyboard.press(key_layer_1[14]);
+					NKROKeyboard.press(key_layer_1[14]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -523,7 +526,7 @@ void Key_16_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[15] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -531,7 +534,7 @@ void Key_16_Preased(void)
 				if(FN_flag)
 					macro_flag = 16;
 				else
-				NKROKeyboard.press(key_layer_1[15]);
+					NKROKeyboard.press(key_layer_1[15]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -557,7 +560,7 @@ void Key_17_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[16] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -565,7 +568,10 @@ void Key_17_Preased(void)
 				FN_flag = true;
 			break;
 			case 1 :
-				FN_flag = !FN_flag;
+				if(key_layer_2[16] == KEY_FN)
+					{FN_flag = !FN_flag;}
+				else
+					{NKROKeyboard.press(key_layer_2[16]);}
 			break;
 			case 2 :
 				if(macro_flag == 0)
@@ -585,7 +591,7 @@ void Key_18_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[17] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -593,7 +599,7 @@ void Key_18_Preased(void)
 				if(FN_flag)
 					macro_flag = 18;
 				else
-				NKROKeyboard.press(key_layer_1[17]);
+					NKROKeyboard.press(key_layer_1[17]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -619,7 +625,7 @@ void Key_19_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[18] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -627,7 +633,7 @@ void Key_19_Preased(void)
 				if(FN_flag)
 					macro_flag = 19;
 				else
-				NKROKeyboard.press(key_layer_1[18]);
+					NKROKeyboard.press(key_layer_1[18]);
 			break;
 			case 1 :
 				if(FN_flag)
@@ -653,7 +659,7 @@ void Key_20_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[19] = true;}
-	if(led_state == 0)
+	if(!led_set)
 	{
 		switch(key_state)
 		{
@@ -661,7 +667,7 @@ void Key_20_Preased(void)
 				if(FN_flag)
 					macro_flag = 20;
 				else
-				NKROKeyboard.press(key_layer_1[19]);
+					NKROKeyboard.press(key_layer_1[19]);
 			break;
 			case 1 :
 				if(FN_flag)

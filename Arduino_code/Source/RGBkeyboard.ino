@@ -8,7 +8,7 @@ int key_flag = 0;
 //键盘层状态变量
 int key_state = 0;
 //灯光控制层状态变量
-int led_state = 0;
+bool led_set = false;
 //灯光层状态变量
 int led_layer = 0;
 //灯光显示休眠标志
@@ -91,14 +91,19 @@ void button(void)
 	}
 	else if(key_flag >= 25)
 	{
+		OLED_flag = 0;
 		macro_flag = 0;
 		key_flag = 0;
-		led_state ++;
-		if(led_state > 1)
+		FN_flag = false;
+		if(led_set)
 		{
-			led_state = 0;
+			led_set = false;
 			EEPROM.put(LED_LAYER_ADD, led_layer); //保存用户设置
 			EEPROM.put(LED_BRIGHTNESS_ADD, led_brightness);
+		}
+		else
+		{
+			led_set = true;
 		}
 		OLED_Display();
 		NKROKeyboard.releaseAll();

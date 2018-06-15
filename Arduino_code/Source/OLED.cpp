@@ -89,7 +89,7 @@ void OLED_Display(void)
 		{
 			oled.println(key_state + 1);
 		}
-		if(led_state == 1)
+		if(led_set)
 		{
 			oled.println("LED SETING");
 		}

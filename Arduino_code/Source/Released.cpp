@@ -7,7 +7,7 @@ void Key_1_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[0] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -31,7 +31,7 @@ void Key_2_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[1] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -55,7 +55,7 @@ void Key_3_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[2] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -79,7 +79,7 @@ void Key_4_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[3] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -103,7 +103,7 @@ void Key_5_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[4] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -127,7 +127,7 @@ void Key_6_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[5] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -151,7 +151,7 @@ void Key_7_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[6] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -176,7 +176,7 @@ void Key_8_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[7] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -200,7 +200,7 @@ void Key_9_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[8] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -224,7 +224,7 @@ void Key_10_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[9] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -248,7 +248,7 @@ void Key_11_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[10] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -272,7 +272,7 @@ void Key_12_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[11] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -296,7 +296,7 @@ void Key_13_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[12] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -320,7 +320,7 @@ void Key_14_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[13] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -344,7 +344,7 @@ void Key_15_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[14] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -368,7 +368,7 @@ void Key_16_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[15] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -392,7 +392,7 @@ void Key_17_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[16] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -412,7 +412,7 @@ void Key_18_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[17] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -436,7 +436,7 @@ void Key_19_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[18] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :
@@ -460,7 +460,7 @@ void Key_20_Released(void)
 {
 	if(led_layer == 1)
 		{led_enable[19] = false;}
-	if(led_state == 0)
+	if(!led_set)
 	switch(key_state)
 		{
 			case 0 :

@@ -1,4 +1,4 @@
-# RGB Keyboard V2.2版本
+# RGB Keyboard V2.3版本
 
 ## Profile：
 使用Pro micro（ATMEGA32U4）作为主控制作的20键全宏定义键盘，具有RGB功能，单引脚控制WS2811/WS2812 RGB灯带，可以定义矩阵键盘及RGB控制IO。
@@ -22,6 +22,11 @@ https://github.com/greiman/SSD1306Ascii
 https://github.com/fabriceo/SCoop
 
 ## Version History:
+
+### V2.3
+1.	优化了led设置的代码来试图提高运行速度
+2.	修正了FN键按住时进入LED设置导致FN一直使能的问题
+3.	层2的FN键可以通过keydefine来选择是否启用了
 
 ### V2.2
 1.	优化了一部分代码体积
@@ -83,7 +88,7 @@ https://github.com/fabriceo/SCoop
 LED号0~19，与按键号同样排序。
 
 ###LED相关变量：
-*led_state*取值为0或1，指示键盘模式（0）或者灯效设置模式（1）。
+*led_state*取值为true或false，指示键盘模式（false）或者灯效设置模式（true）。
 
 *led_layer*取值为int，目前定义为0，1，2，3，分别代表四种灯效。
 
