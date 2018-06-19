@@ -88,6 +88,10 @@ void button(void)
 		OLED_Display();
 		NKROKeyboard.releaseAll();
 		Consumer.releaseAll();
+		/*
+		记录最后一次按键事件发生的时间
+		 */
+		last_press_systime = millis();
 	}
 	else if(key_flag >= 25)
 	{
@@ -108,6 +112,10 @@ void button(void)
 		OLED_Display();
 		NKROKeyboard.releaseAll();
 		Consumer.releaseAll();
+		/*
+		记录最后一次按键事件发生的时间
+		 */
+		last_press_systime = millis();
 	}
 }
 

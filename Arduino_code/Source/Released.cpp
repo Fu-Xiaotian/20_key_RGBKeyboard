@@ -400,7 +400,10 @@ void Key_17_Released(void)
 				FN_flag = false;
 			break;
 			case 1 :
-				if(key_layer_2[16] ！= KEY_FN)
+				if(key_layer_2[16] == KEY_FN)
+					//FN键占用
+					{;}
+				else
 					{NKROKeyboard.release(key_layer_2[16]);}
 			break;
 			case 2 :
