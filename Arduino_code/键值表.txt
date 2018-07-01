@@ -1,4 +1,4 @@
-键值表：
+﻿键值表：
 	KEY_RESERVED		=  0,
 	KEY_ERROR_ROLLOVER	=  1,
 	KEY_POST_FAIL		=  2,
@@ -45,18 +45,18 @@
     KEY_BACKSPACE       = 42,
     KEY_TAB             = 43,
     KEY_SPACE           = 44,
-    KEY_MINUS           = 45,
-    KEY_EQUAL           = 46,
-    KEY_LEFT_BRACE      = 47,
-    KEY_RIGHT_BRACE     = 48,
-    KEY_BACKSLASH       = 49,
+    KEY_MINUS           = 45, 减号-
+    KEY_EQUAL           = 46, 等号=
+    KEY_LEFT_BRACE      = 47, 左括号[
+    KEY_RIGHT_BRACE     = 48, 右括号]
+    KEY_BACKSLASH       = 49, 反斜杠\
     KEY_NON_US_NUM      = 50,
-    KEY_SEMICOLON       = 51,
-    KEY_QUOTE           = 52,
-    KEY_TILDE           = 53,
-    KEY_COMMA           = 54,
-    KEY_PERIOD          = 55,
-    KEY_SLASH           = 56,
+    KEY_SEMICOLON       = 51, 分号；
+    KEY_QUOTE           = 52, 引号‘
+    KEY_TILDE           = 53, ~
+    KEY_COMMA           = 54, 逗号，
+    KEY_PERIOD          = 55, 句号。
+    KEY_SLASH           = 56, 斜杠/
     KEY_CAPS_LOCK		= 0x39,
     KEY_F1				= 0x3A,
     KEY_F2				= 0x3B,
