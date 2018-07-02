@@ -3,6 +3,7 @@
 ## Created By AutoCAD 2019 / Save As AutoCAD 2007
 
 ## Installation Order
+*From top to bottom*
 1.	Cover plate(Protect MCU & OLED)
 2.	Positioning plate(Keep Cherry switch in right place)
 3.	Support layer(Connect)
