@@ -9,7 +9,7 @@ void Key_1_HOLD(void)
 		NKROKeyboard.write(KEY_ESC);
 		RUN_ONCE
 	}
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_CTRL);
 		NKROKeyboard.press(KEY_B);
@@ -20,7 +20,7 @@ void Key_1_HOLD(void)
 
 void Key_2_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_ALT);
 		NKROKeyboard.press(KEY_TAB);
@@ -31,7 +31,7 @@ void Key_2_HOLD(void)
 
 void Key_3_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_CTRL);
 		NKROKeyboard.press(KEY_T);
@@ -42,7 +42,7 @@ void Key_3_HOLD(void)
 
 void Key_4_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_CTRL);
 		NKROKeyboard.press(KEY_W);
@@ -53,7 +53,7 @@ void Key_4_HOLD(void)
 
 void Key_5_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_CTRL);
 		NKROKeyboard.press(KEY_1);
@@ -64,7 +64,7 @@ void Key_5_HOLD(void)
 
 void Key_6_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_CTRL);
 		NKROKeyboard.press(KEY_PAGE_UP);
@@ -75,7 +75,7 @@ void Key_6_HOLD(void)
 
 void Key_7_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_CTRL);
 		NKROKeyboard.press(KEY_PAGE_DOWN);
@@ -86,7 +86,7 @@ void Key_7_HOLD(void)
 
 void Key_8_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_CTRL);
 		NKROKeyboard.press(KEY_2);
@@ -97,7 +97,7 @@ void Key_8_HOLD(void)
 
 void Key_9_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		Consumer.write(CONSUMER_CALCULATOR);
 		RUN_ONCE
@@ -106,7 +106,7 @@ void Key_9_HOLD(void)
 
 void Key_10_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		Consumer.write(MEDIA_VOLUME_MUTE);
 		RUN_ONCE
@@ -115,10 +115,10 @@ void Key_10_HOLD(void)
 
 void Key_11_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		Consumer.press(MEDIA_VOLUME_DOWN);
-		while(macro_flag == 11)
+		while(macro_flag == 21)
 			{Scheduler.delay(50);}
 		Consumer.release(MEDIA_VOLUME_DOWN);
 		RUN_ONCE
@@ -127,10 +127,10 @@ void Key_11_HOLD(void)
 
 void Key_12_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		Consumer.press(MEDIA_VOLUME_UP);
-		while(macro_flag == 12)
+		while(macro_flag == 22)
 			{Scheduler.delay(50);}
 		Consumer.release(MEDIA_VOLUME_UP);
 		RUN_ONCE
@@ -139,7 +139,7 @@ void Key_12_HOLD(void)
 
 void Key_13_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_CTRL);
 		NKROKeyboard.press(KEY_LEFT_ALT);
@@ -151,7 +151,7 @@ void Key_13_HOLD(void)
 
 void Key_14_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_CTRL);
 		NKROKeyboard.press(KEY_D);
@@ -162,7 +162,7 @@ void Key_14_HOLD(void)
 
 void Key_15_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_CTRL);
 		NKROKeyboard.press(KEY_LEFT_SHIFT);
@@ -174,7 +174,7 @@ void Key_15_HOLD(void)
 
 void Key_16_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_CTRL);
 		NKROKeyboard.press(KEY_Z);
@@ -185,7 +185,7 @@ void Key_16_HOLD(void)
 
 void Key_17_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_CTRL);
 		NKROKeyboard.press(KEY_X);
@@ -196,7 +196,7 @@ void Key_17_HOLD(void)
 
 void Key_18_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_CTRL);
 		NKROKeyboard.press(KEY_C);
@@ -207,7 +207,7 @@ void Key_18_HOLD(void)
 
 void Key_19_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_CTRL);
 		NKROKeyboard.press(KEY_V);
@@ -218,7 +218,7 @@ void Key_19_HOLD(void)
 
 void Key_20_HOLD(void)
 {
-	if(key_state == 1)
+	if(key_state == 2)
 	{
 		NKROKeyboard.press(KEY_LEFT_CTRL);
 		NKROKeyboard.press(KEY_S);
