@@ -26,6 +26,7 @@ void setup()
 	pinMode(MODE_KEY,INPUT);
 	LED_Init();	//初始化RGB
 	OLED_Init(); //初始化OLED
+	kpd.setDebounceTime(DEBOUNCETIME); //设置键盘消抖延时
 	NKROKeyboard.begin(); //初始化键盘
 	Consumer.begin(); //初始化多媒体控制器
 	BootKeyboard.begin(); //初始化主机状态控制器
@@ -35,6 +36,7 @@ void setup()
 
 	EEPROM.get(LED_LAYER_ADD, led_layer); //读取用户设置
 	EEPROM.get(LED_BRIGHTNESS_ADD, led_brightness);
+	EEPROM.get(KEY_LAYER_ADD, key_state);
 
 	Scheduler.startLoop(loop2); //多线程使能
 	Scheduler.startLoop(LED);
@@ -104,6 +106,7 @@ void button(void)
 			led_set = false;
 			EEPROM.put(LED_LAYER_ADD, led_layer); //保存用户设置
 			EEPROM.put(LED_BRIGHTNESS_ADD, led_brightness);
+			EEPROM.put(KEY_LAYER_ADD, key_state);
 		}
 		else
 		{
@@ -124,16 +127,20 @@ void button(void)
  */
 void LED(void)
 {
-	if(millis() - last_press_systime >= 300000)
+	//若5min没有动作，则熄灭灯光进入节能模式
+	if(millis() - last_press_systime >= SLEEP_TIME)
 		{
 			oled_sleep = true;
 			led_brightness = 0;
 			brightness_upload();
 			All_bright(255, 255, 255);
 			OLED_Display();
+			EEPROM.put(LED_LAYER_ADD, led_layer); //保存用户设置
+			EEPROM.put(LED_BRIGHTNESS_ADD, led_brightness);
+			EEPROM.put(KEY_LAYER_ADD, key_state);
 			while(1)
 			{
-				if(millis() - last_press_systime <= 300000)
+				if(millis() - last_press_systime <= SLEEP_TIME)
 				{
 					oled_sleep = false;
 					OLED_Display();
@@ -141,7 +148,7 @@ void LED(void)
 					brightness_upload();
 					break;
 				}
-				Scheduler.delay(20);
+				Scheduler.delay(30);
 			}
 		}
 	//灯效

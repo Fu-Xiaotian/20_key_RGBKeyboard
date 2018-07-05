@@ -2,7 +2,9 @@
 
 unsigned long led_delay_time = 0;
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(20, 10, NEO_RGB + NEO_KHZ800);
-bool led_enable[20] = {false};
+
+bool led_enable[20] = {false}; //但点亮使能参数
+int bright_coe[20] = {0}; //单点亮渐隐亮度系数
 
 int old_led_layer = 0;
 int led_brightness = BRIGHTNESS;
@@ -143,19 +145,46 @@ void rainbowCycle(uint8_t wait)
   }
 }
 
+/**
+ * 彩虹单点亮灯效函数
+ * @param wait 彩虹渐变间隔时间。单位ms
+ */
 void rainbowPoint(uint8_t wait)
 {
 	uint16_t i, j;
+	uint32_t c = 0;
+	int r, g, b;
 
   	for(j=0; j<256; j++) 
   	{ // 5 cycles of all colors on wheel
     IF_LED_LAYER_CHANGE
     for(i=0; i< strip.numPixels(); i++) 
     {
+    	c = Wheel((i+j) & 255);
+    	r = (uint8_t)(c >> 16),
+    	g = (uint8_t)(c >>  8),
+    	b = (uint8_t)c;
     	if(led_enable[i])
-      		strip.setPixelColor(i, Wheel((i+j) & 255));
+    	{
+    		bright_coe[i] = 255;
+      		strip.setPixelColor(i, c);
+      	}
       	else
-      		clearone(i);
+      	{
+      		bright_coe[i] = bright_coe[i] - 8;
+      		if(bright_coe[i] < 0)
+      		{
+      			bright_coe[i] = 0;
+      		}
+      		if(bright_coe[i] > 0)
+      		{
+      			strip.setPixelColor(i, ((r * bright_coe[i]) >> 8), ((g * bright_coe[i]) >> 8), ((b * bright_coe[i]) >> 8));
+      		}
+      		else
+      		{
+      			clearone(i);
+      		}
+      	}
     }
     strip.show();
     Scheduler.delay(wait);

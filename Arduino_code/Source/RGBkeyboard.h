@@ -37,14 +37,18 @@ void MODE(void);
 void button(void);
 void loop2(void);
 
-//define
-#define HOLD_DELAY 1000 //定义按住重复的间隔，全键盘共用
+//用户不可更改的宏定义
 #define MODE_KEY 9 //模式切换按键PIN
 #define MAX_KEY_LAYER 3 //定义现有按键层数
 #define LED_LAYER_ADD 0 //定义LED层状态储存地址
 #define LED_BRIGHTNESS_ADD 2 //定义LED亮度存储地址
-#define BRIGHTNESS 32 //默认灯光亮度
+#define KEY_LAYER_ADD 4 //定义按键层设置储存地址
 #define I2C_ADDRESS 0x3C //OLED通信地址
+
+//用户可更改以便设置的宏定义
+#define DEBOUNCETIME 10 //键盘消抖延时，单位ms
+#define BRIGHTNESS 32 //默认灯光亮度，0~128取值
+#define SLEEP_TIME 5*60*1000 //定义休眠时间，单位ms
 
 /*
 变量声明

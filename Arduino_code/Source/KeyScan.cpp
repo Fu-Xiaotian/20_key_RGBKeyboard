@@ -149,19 +149,3 @@ void key_scan(void)
 			{Key_20_Released();}
 	}
 }
-
-/**
- * @param	按键扫描用非阻塞函数
- * @return	布尔值
- */
-bool keyscan_delay(unsigned long t)
-{
-	unsigned long time = millis();
-	if(time - key_delay_time > t)
-		{
-			key_delay_time = time;
-			return true;
-		}
-	else
-		{return false;}
-}
