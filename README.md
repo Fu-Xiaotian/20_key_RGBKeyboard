@@ -7,6 +7,19 @@
 
 可以使用IIC总线与SSD1306控制的OLED显示屏通信，实现键盘状态显示。
 
+###键盘基本使用
+短按MODE按键切换键盘层，键盘层1和键盘层2为普通按键，定义可在Keydefine文件中查看。按键层3定义如下表。
+|Ctrl+B|Ctrl+TAB|Ctrl+T|Ctrl+W|
+|Ctrl+1|Ctrl+pageup|Ctrl+pagedown|Ctrl+2|
+|计算器|静音|音量减少|音量增加|
+|Ctrl+Alt+A|Ctrl+D|Ctrl+Shift+Z|Ctrl+Z|
+|Ctrl+X|Ctrl+C|Ctrl+V|Ctr+S|
+
+长按MODE按键进入设置状态，按键定义如下表。
+|亮度设置为0|亮度设置为默认|亮度减少|亮度增加|
+|白光常亮灯效|单点亮彩虹|同步彩虹|波浪彩虹|
+|设置默认按键层为1|设置默认按键层为2|设置默认按键层为3|全部恢复默认设置|
+
 ## Library：
 1.	HID-Project库：键盘USB功能主要支撑以及扩展
 https://github.com/NicoHood/HID
@@ -25,7 +38,7 @@ https://github.com/fabriceo/SCoop
 
 ### V2.4
 1.	简化了一部分代码
-2.	添加了按键层设置存储，每次更换按键层都会写一次eeprom
+2.	将LED setting模式变更为Setting Mode，加入了默认按键层设置功能，可以在原先的LED Setting模式（现在的Setting Mode）中设置
 3.	单点亮灯效加入了渐隐功能
 4.	部分设置功能放入Setting.h文件中
 

@@ -53,7 +53,7 @@ extern Adafruit_NeoPixel strip;
 //键盘层状态变量
 extern int key_state;
 //灯光控制层状态变量
-extern bool led_set;
+extern bool def_set;
 //灯光层状态变量
 extern int led_layer;
 //最后一次按键事件系统时间记录变量，用于计算键盘空闲时间

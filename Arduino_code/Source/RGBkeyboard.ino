@@ -7,8 +7,8 @@ int old_key_flag = 0;
 int key_flag = 0;
 //键盘层状态变量
 int key_state = 0;
-//灯光控制层状态变量
-bool led_set = false;
+//默认值设置状态变量
+bool def_set = false;
 //灯光层状态变量
 int led_layer = 0;
 //灯光显示休眠标志
@@ -76,43 +76,53 @@ void loop2()
  */
 void button(void)
 {
-	if(key_flag <25 &&key_flag >1)
+	if(key_flag <20 &&key_flag >1)
 	{
-		OLED_flag = 0;
-		macro_flag = 0;
-		FN_flag = false;
-		key_flag = 0;
-		key_state ++;
-		if(key_state >= MAX_KEY_LAYER)
+		if(!def_set)
 		{
-			key_state = 0;
+			//控制变量全清
+			OLED_flag = 0;
+			macro_flag = 0;
+			FN_flag = false;
+			key_flag = 0;
+			key_state ++;
+			if(key_state >= MAX_KEY_LAYER)
+			{
+				key_state = 0;
+			}
+			OLED_Display();
+			//释放所有按键
+			NKROKeyboard.releaseAll();
+			Consumer.releaseAll();
 		}
-		EEPROM.put(KEY_LAYER_ADD, key_state);
-		OLED_Display();
-		NKROKeyboard.releaseAll();
-		Consumer.releaseAll();
 		/*
 		记录最后一次按键事件发生的时间
 		 */
 		last_press_systime = millis();
 	}
-	else if(key_flag >= 25)
+	else if(key_flag >= 20)
 	{
+		EEPROM.get(LED_LAYER_ADD, led_layer); //读取用户设置
+		EEPROM.get(LED_BRIGHTNESS_ADD, led_brightness);
+		EEPROM.get(KEY_LAYER_ADD, key_state);
+		//控制变量全清
 		OLED_flag = 0;
 		macro_flag = 0;
 		key_flag = 0;
 		FN_flag = false;
-		if(led_set)
+		if(def_set)
 		{
-			led_set = false;
+			def_set = false;
 			EEPROM.put(LED_LAYER_ADD, led_layer); //保存用户设置
 			EEPROM.put(LED_BRIGHTNESS_ADD, led_brightness);
+			EEPROM.put(KEY_LAYER_ADD, key_state);
 		}
 		else
 		{
-			led_set = true;
+			def_set = true;
 		}
 		OLED_Display();
+		//释放所有按键
 		NKROKeyboard.releaseAll();
 		Consumer.releaseAll();
 		/*

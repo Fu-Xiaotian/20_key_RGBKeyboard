@@ -9,7 +9,7 @@ void Key_1_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[0] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -43,7 +43,7 @@ void Key_2_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[1] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -69,7 +69,7 @@ void Key_2_Preased(void)
 	}
 	else
 	{
-		led_brightness = 32;
+		led_brightness = BRIGHTNESS;
 	}
 }
 
@@ -77,7 +77,7 @@ void Key_3_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[2] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -111,7 +111,7 @@ void Key_4_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[3] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -145,7 +145,7 @@ void Key_5_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[4] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -180,7 +180,7 @@ void Key_6_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[5] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -215,7 +215,7 @@ void Key_7_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[6] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -253,7 +253,7 @@ void Key_8_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[7] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -288,7 +288,7 @@ void Key_9_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[8] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -314,7 +314,8 @@ void Key_9_Preased(void)
 	}
 	else
 	{
-		
+		key_state = 0;
+		OLED_Display();
 	}
 }
 
@@ -322,7 +323,7 @@ void Key_10_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[9] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -348,7 +349,8 @@ void Key_10_Preased(void)
 	}
 	else
 	{
-		
+		key_state = 1;
+		OLED_Display();
 	}
 }
 
@@ -356,7 +358,7 @@ void Key_11_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[10] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -382,7 +384,8 @@ void Key_11_Preased(void)
 	}
 	else
 	{
-		
+		key_state = 2;
+		OLED_Display();
 	}
 }
 
@@ -390,7 +393,7 @@ void Key_12_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[11] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -416,7 +419,10 @@ void Key_12_Preased(void)
 	}
 	else
 	{
-		
+		led_brightness = BRIGHTNESS;
+		key_state = 0;
+		led_layer = 2;
+		LED_AllClear();
 	}
 }
 
@@ -424,7 +430,7 @@ void Key_13_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[12] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -458,7 +464,7 @@ void Key_14_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[13] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -492,7 +498,7 @@ void Key_15_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[14] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -526,7 +532,7 @@ void Key_16_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[15] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -560,7 +566,7 @@ void Key_17_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[16] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -591,7 +597,7 @@ void Key_18_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[17] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -625,7 +631,7 @@ void Key_19_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[18] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
@@ -659,7 +665,7 @@ void Key_20_Preased(void)
 {
 	if(led_layer == 1)
 		{led_enable[19] = true;}
-	if(!led_set)
+	if(!def_set)
 	{
 		switch(key_state)
 		{
