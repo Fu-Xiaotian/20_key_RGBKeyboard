@@ -87,6 +87,7 @@ void button(void)
 		{
 			key_state = 0;
 		}
+		EEPROM.put(KEY_LAYER_ADD, key_state);
 		OLED_Display();
 		NKROKeyboard.releaseAll();
 		Consumer.releaseAll();
@@ -106,7 +107,6 @@ void button(void)
 			led_set = false;
 			EEPROM.put(LED_LAYER_ADD, led_layer); //保存用户设置
 			EEPROM.put(LED_BRIGHTNESS_ADD, led_brightness);
-			EEPROM.put(KEY_LAYER_ADD, key_state);
 		}
 		else
 		{
@@ -135,9 +135,6 @@ void LED(void)
 			brightness_upload();
 			All_bright(255, 255, 255);
 			OLED_Display();
-			EEPROM.put(LED_LAYER_ADD, led_layer); //保存用户设置
-			EEPROM.put(LED_BRIGHTNESS_ADD, led_brightness);
-			EEPROM.put(KEY_LAYER_ADD, key_state);
 			while(1)
 			{
 				if(millis() - last_press_systime < SLEEP_TIME)
