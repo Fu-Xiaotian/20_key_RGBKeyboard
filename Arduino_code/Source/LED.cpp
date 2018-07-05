@@ -171,7 +171,7 @@ void rainbowPoint(uint8_t wait)
       	}
       	else
       	{
-      		bright_coe[i] = bright_coe[i] - 8;
+      		bright_coe[i] = bright_coe[i] - (4*FADE_OUT_SPEED);
       		if(bright_coe[i] < 0)
       		{
       			bright_coe[i] = 0;

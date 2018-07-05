@@ -140,7 +140,7 @@ void LED(void)
 			EEPROM.put(KEY_LAYER_ADD, key_state);
 			while(1)
 			{
-				if(millis() - last_press_systime <= SLEEP_TIME)
+				if(millis() - last_press_systime < SLEEP_TIME)
 				{
 					oled_sleep = false;
 					OLED_Display();

@@ -28,6 +28,7 @@
 #include "OLED.h"
 #include "macro.h"
 #include "keydefine.h"
+#include "Setting.h"
 
 /*
 声明函数
@@ -44,11 +45,6 @@ void loop2(void);
 #define LED_BRIGHTNESS_ADD 2 //定义LED亮度存储地址
 #define KEY_LAYER_ADD 4 //定义按键层设置储存地址
 #define I2C_ADDRESS 0x3C //OLED通信地址
-
-//用户可更改以便设置的宏定义
-#define DEBOUNCETIME 10 //键盘消抖延时，单位ms
-#define BRIGHTNESS 32 //默认灯光亮度，0~128取值
-#define SLEEP_TIME 5*60*1000 //定义休眠时间，单位ms
 
 /*
 变量声明
