@@ -102,9 +102,6 @@ void button(void)
 	}
 	else if(key_flag >= 20)
 	{
-		EEPROM.get(LED_LAYER_ADD, led_layer); //读取用户设置
-		EEPROM.get(LED_BRIGHTNESS_ADD, led_brightness);
-		EEPROM.get(KEY_LAYER_ADD, key_state);
 		//控制变量全清
 		OLED_flag = 0;
 		macro_flag = 0;
@@ -120,6 +117,9 @@ void button(void)
 		else
 		{
 			def_set = true;
+			EEPROM.get(LED_LAYER_ADD, led_layer); //读取用户设置
+			EEPROM.get(LED_BRIGHTNESS_ADD, led_brightness);
+			EEPROM.get(KEY_LAYER_ADD, key_state);
 		}
 		OLED_Display();
 		//释放所有按键
