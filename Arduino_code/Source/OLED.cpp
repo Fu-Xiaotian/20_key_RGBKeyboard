@@ -89,9 +89,13 @@ void OLED_Display(void)
 		{
 			oled.println(key_state + 1);
 		}
-		if(def_set)
+		if(led_set)
 		{
-			oled.println("SETING MODE");
+			oled.println("LED SETTING");
+		}
+		else if(key_set)
+		{
+			oled.println("KEY SETTING");
 		}
 		else
 		{

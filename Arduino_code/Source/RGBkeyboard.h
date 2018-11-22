@@ -43,17 +43,18 @@ void loop2(void);
 #define MAX_KEY_LAYER 3 //定义现有按键层数
 #define LED_LAYER_ADD 0 //定义LED层状态储存地址
 #define LED_BRIGHTNESS_ADD 2 //定义LED亮度存储地址
-#define KEY_LAYER_ADD 4 //定义按键层设置储存地址
 #define I2C_ADDRESS 0x3C //OLED通信地址
 
 /*
 变量声明
  */
 extern Adafruit_NeoPixel strip;
+//按键设置层状态变量
+extern bool key_set;
 //键盘层状态变量
 extern int key_state;
 //灯光控制层状态变量
-extern bool def_set;
+extern bool led_set;
 //灯光层状态变量
 extern int led_layer;
 //最后一次按键事件系统时间记录变量，用于计算键盘空闲时间

@@ -216,13 +216,7 @@ void Key_16_MARCO(void)
 
 void Key_17_MARCO(void)
 {
-	if(key_state == 2)
-	{
-		NKROKeyboard.press(KEY_LEFT_CTRL);
-		NKROKeyboard.press(KEY_X);
-		NKROKeyboard.releaseAll();
-		RUN_ONCE;
-	}
+	//此按键无法定义宏功能
 }
 
 void Key_18_MARCO(void)

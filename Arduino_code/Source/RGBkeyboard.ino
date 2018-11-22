@@ -5,10 +5,12 @@ unsigned long last_press_systime = 0;
 //独立按键识别变量
 int old_key_flag = 0;
 int key_flag = 0;
+//按键设置层状态变量
+bool key_set = false;
 //键盘层状态变量
 int key_state = 0;
 //默认值设置状态变量
-bool def_set = false;
+bool led_set = false;
 //灯光层状态变量
 int led_layer = 0;
 //灯光显示休眠标志
@@ -36,7 +38,6 @@ void setup()
 
 	EEPROM.get(LED_LAYER_ADD, led_layer); //读取用户设置
 	EEPROM.get(LED_BRIGHTNESS_ADD, led_brightness);
-	EEPROM.get(KEY_LAYER_ADD, key_state);
 
 	Scheduler.startLoop(loop2); //多线程使能
 	Scheduler.startLoop(LED);
@@ -78,18 +79,16 @@ void button(void)
 {
 	if(key_flag <20 &&key_flag >1)
 	{
-		if(!def_set)
+		if(!led_set)
 		{
 			//控制变量全清
 			OLED_flag = 0;
 			macro_flag = 0;
 			FN_flag = false;
 			key_flag = 0;
-			key_state ++;
-			if(key_state >= MAX_KEY_LAYER)
-			{
-				key_state = 0;
-			}
+			//出入按键设置层
+			key_set = true;
+			//刷新设置
 			OLED_Display();
 			//释放所有按键
 			NKROKeyboard.releaseAll();
@@ -107,19 +106,17 @@ void button(void)
 		macro_flag = 0;
 		key_flag = 0;
 		FN_flag = false;
-		if(def_set)
+		if(led_set)
 		{
-			def_set = false;
+			led_set = false;
 			EEPROM.put(LED_LAYER_ADD, led_layer); //保存用户设置
 			EEPROM.put(LED_BRIGHTNESS_ADD, led_brightness);
-			EEPROM.put(KEY_LAYER_ADD, key_state);
 		}
 		else
 		{
-			def_set = true;
+			led_set = true;
 			EEPROM.get(LED_LAYER_ADD, led_layer); //读取用户设置
 			EEPROM.get(LED_BRIGHTNESS_ADD, led_brightness);
-			EEPROM.get(KEY_LAYER_ADD, key_state);
 		}
 		OLED_Display();
 		//释放所有按键
