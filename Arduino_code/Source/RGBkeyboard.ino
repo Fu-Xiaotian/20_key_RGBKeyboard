@@ -15,6 +15,8 @@ bool led_set = false;
 int led_layer = 0;
 //灯光显示休眠标志
 bool oled_sleep = false;
+//定义mode按键
+OneButton mode(MODE_KEY, true);
 
 /**
  * @brief      初始化
@@ -23,8 +25,6 @@ bool oled_sleep = false;
  */
 void setup()
 {
-	Serial.begin(9600);
-	Serial.println("begin");
 	pinMode(MODE_KEY,INPUT);
 	LED_Init();	//初始化RGB
 	OLED_Init(); //初始化OLED
@@ -41,8 +41,9 @@ void setup()
 
 	Scheduler.startLoop(loop2); //多线程使能
 	Scheduler.startLoop(LED);
-	Scheduler.startLoop(MODE);
 
+	mode.attachClick(short_button); //mode按键识别
+	mode.attachPress(long_button);
 
 	//OLED显示信息
 	OLED_Display();
@@ -56,9 +57,10 @@ void setup()
 void loop()
 {
 	key_scan(); //扫描按键按下与释放
-	button(); //处理模式按键事件
 	brightness_upload(); //更新led亮度
 	OLED_upload(); //当进出宏时更新OLED显示
+
+	mode.tick(); //监视独立按键
 	
 	yield();
 }
@@ -73,33 +75,37 @@ void loop2()
 }
 
 /**
- * 独立按键事件处理函数
+ * 独立按键短按事件处理函数
  */
-void button(void)
+void short_button(void)
 {
-	if(key_flag <20 &&key_flag >1)
+	if(!led_set)
 	{
-		if(!led_set)
-		{
-			//控制变量全清
-			OLED_flag = 0;
-			macro_flag = 0;
-			FN_flag = false;
-			key_flag = 0;
-			//出入按键设置层
-			key_set = true;
-			//刷新设置
-			OLED_Display();
-			//释放所有按键
-			NKROKeyboard.releaseAll();
-			Consumer.releaseAll();
-		}
-		/*
-		记录最后一次按键事件发生的时间
-		 */
-		last_press_systime = millis();
+		//控制变量全清
+		OLED_flag = 0;
+		macro_flag = 0;
+		FN_flag = false;
+		key_flag = 0;
+		//出入按键设置层
+		key_set = true;
+		//刷新设置
+		OLED_Display();
+		//释放所有按键
+		NKROKeyboard.releaseAll();
+		Consumer.releaseAll();
 	}
-	else if(key_flag >= 20)
+	/*
+	记录最后一次按键事件发生的时间
+	 */
+	last_press_systime = millis();
+}
+
+/**
+ * 独立按键长按事件处理函数
+ */
+void long_button(void)
+{
+	if(!key_set)
 	{
 		//控制变量全清
 		OLED_flag = 0;
@@ -122,11 +128,11 @@ void button(void)
 		//释放所有按键
 		NKROKeyboard.releaseAll();
 		Consumer.releaseAll();
-		/*
-		记录最后一次按键事件发生的时间
-		 */
-		last_press_systime = millis();
 	}
+	/*
+	记录最后一次按键事件发生的时间
+	 */
+	last_press_systime = millis();
 }
 
 /**
@@ -164,25 +170,5 @@ void LED(void)
 		{rainbow(40); }
 	if(led_layer == 3)
 		{rainbowCycle(40); }
-	yield();
-}
-
-/**
- * 模式按键扫描线程
- */
-void MODE(void)
-{
-	//独立按键识别函数
-	
-	int flag = digitalRead(MODE_KEY);
-	if (flag == 0)
-	  	{old_key_flag ++;}
-	else
-		{
-			if(old_key_flag != 0)
-				{key_flag = old_key_flag;}
-			old_key_flag = 0;
-		}
-	Scheduler.delay(20);
 	yield();
 }

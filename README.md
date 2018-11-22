@@ -41,6 +41,8 @@ https://github.com/adafruit/Adafruit_NeoPixel
 https://github.com/greiman/SSD1306Ascii
 7.	SchedulerARMAVR库：Scoop库中为AVR单片机设计的多线程任务调度器库
 https://github.com/fabriceo/SCoop
+8. OneButton库：独立按键有限状态机识别库，为Mode按键的稳定识别提供支持
+https://github.com/mathertel/OneButton
 
 ## Version History:
 
@@ -50,6 +52,7 @@ https://github.com/fabriceo/SCoop
 3. 取消了上一个版本中的Setting Mode，不再可以设置默认按键层
 4. 取消了原来的第三层设定（即宏层），所以层均不可以不使用FN键激活宏
 5. 只有17号按键可以被设定为FN键，其他按键不会对设定做出响应
+6. 换用OneButton库识别Mode按键以提高按键识别的稳定性
 
 ### V2.4
 1.	简化了一部分代码

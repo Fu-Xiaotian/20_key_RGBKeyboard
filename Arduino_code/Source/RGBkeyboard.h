@@ -17,6 +17,7 @@
 #include "SSD1306Ascii.h"
 #include "SSD1306AsciiWire.h"
 #include <SchedulerARMAVR.h>
+#include "OneButton.h"
 
 /*
 包含个人函数
@@ -34,8 +35,8 @@
 声明函数
  */
 void LED(void);
-void MODE(void);
-void button(void);
+void short_button(void);
+void long_button(void);
 void loop2(void);
 
 //用户不可更改的宏定义
