@@ -1,8 +1,34 @@
 #include "RGBkeyboard.h"
 
+/*****************************
+ * 使用 
+ * NKROKeyboard.press() 键盘按下
+ * NKROKeyboard.release() 键盘释放
+ * NKROKeyboard.print() 输出字符串
+ * Scheduler.delay() 延时毫秒数
+ * RUN_ONCE; 使得宏仅进行一次
+ * while(macro_flag == 12) {Scheduler.delay(50);} 中间插入此语句使得宏按下一直有效
+ * Mouse.click() 模拟鼠标左键按下
+ * Mouse.click(MOUSE_RIGHT) 模拟鼠标右键按下
+ * Consumer.press() 多媒体控制器按键按下
+ * Consumer.release() 多媒体控制器按键释放
+ * *****************************/
+
 //宏标志，0为无宏激活，1~20为对应按键宏激活
 int macro_flag = 0;
+long delay_time = 300;
 
+/**
+ * 返回宏延时数据
+ */
+long get_macro_delay(void)
+{
+	return delay_time;
+}
+
+/**
+ * 宏引导函数
+ */
 void Macro_Switch(void)
 {
 	switch(macro_flag)
@@ -31,223 +57,165 @@ void Macro_Switch(void)
 }
 
 /**
- * 按键宏事件响应函数
+ * 按键宏事件处理函数
  */
 void Key_1_MARCO(void)
 {
 	if(key_state == 0)
-	{
-		NKROKeyboard.write(KEY_ESC);
-		RUN_ONCE;
-	}
-	if(key_state == 2)
-	{
-		NKROKeyboard.press(KEY_LEFT_CTRL);
-		NKROKeyboard.press(KEY_B);
-		NKROKeyboard.releaseAll();
-		RUN_ONCE;
-	}
-}
-
-void Key_2_MARCO(void)
-{
-	if(key_state == 2)
-	{
-		NKROKeyboard.press(KEY_LEFT_ALT);
-		NKROKeyboard.press(KEY_TAB);
-		NKROKeyboard.releaseAll();
-		RUN_ONCE;
-	}
-}
-
-void Key_3_MARCO(void)
-{
-	if(key_state == 2)
-	{
-		NKROKeyboard.press(KEY_LEFT_CTRL);
-		NKROKeyboard.press(KEY_T);
-		NKROKeyboard.releaseAll();
-		RUN_ONCE;
-	}
-}
-
-void Key_4_MARCO(void)
-{
-	if(key_state == 2)
-	{
-		NKROKeyboard.press(KEY_LEFT_CTRL);
-		NKROKeyboard.press(KEY_W);
-		NKROKeyboard.releaseAll();
-		RUN_ONCE;
-	}
-}
-
-void Key_5_MARCO(void)
-{
-	if(key_state == 2)
-	{
-		NKROKeyboard.press(KEY_LEFT_CTRL);
-		NKROKeyboard.press(KEY_1);
-		NKROKeyboard.releaseAll();
-		RUN_ONCE;
-	}
-}
-
-void Key_6_MARCO(void)
-{
-	if(key_state == 2)
-	{
-		NKROKeyboard.press(KEY_LEFT_CTRL);
-		NKROKeyboard.press(KEY_PAGE_UP);
-		NKROKeyboard.releaseAll();
-		RUN_ONCE;
-	}
-}
-
-void Key_7_MARCO(void)
-{
-	if(key_state == 2)
-	{
-		NKROKeyboard.press(KEY_LEFT_CTRL);
-		NKROKeyboard.press(KEY_PAGE_DOWN);
-		NKROKeyboard.releaseAll();
-		RUN_ONCE;
-	}
-}
-
-void Key_8_MARCO(void)
-{
-	if(key_state == 2)
-	{
-		NKROKeyboard.press(KEY_LEFT_CTRL);
-		NKROKeyboard.press(KEY_2);
-		NKROKeyboard.releaseAll();
-		RUN_ONCE;
-	}
-}
-
-void Key_9_MARCO(void)
-{
-	if(key_state == 2)
-	{
-		Consumer.write(CONSUMER_CALCULATOR);
-		RUN_ONCE;
-	}
-}
-
-void Key_10_MARCO(void)
-{
-	if(key_state == 2)
 	{
 		Consumer.write(MEDIA_VOLUME_MUTE);
 		RUN_ONCE;
 	}
 }
 
-void Key_11_MARCO(void)
+void Key_2_MARCO(void)
 {
-	if(key_state == 2)
+	if(key_state == 0)
 	{
 		Consumer.press(MEDIA_VOLUME_DOWN);
-		while(macro_flag == 21)
+		while(macro_flag == 12)
 			{Scheduler.delay(50);}
 		Consumer.release(MEDIA_VOLUME_DOWN);
 		RUN_ONCE;
 	}
 }
 
-void Key_12_MARCO(void)
+void Key_3_MARCO(void)
 {
-	if(key_state == 2)
-	{
+	if(key_state == 0)
+	{	
 		Consumer.press(MEDIA_VOLUME_UP);
-		while(macro_flag == 22)
+		while(macro_flag == 8)
 			{Scheduler.delay(50);}
 		Consumer.release(MEDIA_VOLUME_UP);
 		RUN_ONCE;
 	}
 }
 
+void Key_4_MARCO(void)
+{
+	
+}
+
+void Key_5_MARCO(void)
+{
+	
+}
+
+void Key_6_MARCO(void)
+{
+	
+}
+
+void Key_7_MARCO(void)
+{
+	if(key_state == 0)
+	{	
+		OLED_flag = 1;
+		NKROKeyboard.press(KEY_LEFT_CTRL);
+		Scheduler.delay(50);
+		NKROKeyboard.press(KEY_E);
+		Scheduler.delay(50);
+		NKROKeyboard.release(KEY_E);
+		Scheduler.delay(50);
+		NKROKeyboard.release(KEY_LEFT_CTRL);
+		Scheduler.delay(delay_time);
+	}
+}
+
+void Key_8_MARCO(void)
+{
+	
+}
+
+void Key_9_MARCO(void)
+{
+	
+}
+
+void Key_10_MARCO(void)
+{
+	
+}
+
+void Key_11_MARCO(void)
+{
+	
+}
+
+void Key_12_MARCO(void)
+{
+	if(key_state == 0)
+	{	
+		delay_time = delay_time - 50;
+		if(delay_time <= 100)
+		{delay_time = 100;}
+		RUN_ONCE;
+	}
+}
+
 void Key_13_MARCO(void)
 {
-	if(key_state == 2)
+	if(key_state == 0)
 	{
-		NKROKeyboard.press(KEY_LEFT_CTRL);
-		NKROKeyboard.press(KEY_LEFT_ALT);
-		NKROKeyboard.press(KEY_A);
-		NKROKeyboard.releaseAll();
-		RUN_ONCE;
+		OLED_flag = 2;
+		Mouse.click();
+		Scheduler.delay(delay_time);
 	}
 }
 
 void Key_14_MARCO(void)
 {
-	if(key_state == 2)
-	{
-		NKROKeyboard.press(KEY_LEFT_CTRL);
-		NKROKeyboard.press(KEY_D);
-		NKROKeyboard.releaseAll();
-		RUN_ONCE;
-	}
+	
 }
 
 void Key_15_MARCO(void)
 {
-	if(key_state == 2)
+	if(key_state == 0)
 	{
-		NKROKeyboard.press(KEY_LEFT_CTRL);
-		NKROKeyboard.press(KEY_LEFT_SHIFT);
-		NKROKeyboard.press(KEY_Z);
-		NKROKeyboard.releaseAll();
+		NKROKeyboard.write(KEY_5);
 		RUN_ONCE;
 	}
 }
 
 void Key_16_MARCO(void)
 {
-	if(key_state == 2)
-	{
-		NKROKeyboard.press(KEY_LEFT_CTRL);
-		NKROKeyboard.press(KEY_Z);
-		NKROKeyboard.releaseAll();
+	if(key_state == 0)
+	{	
+		delay_time = delay_time + 50;
+		if(delay_time >= 500)
+		{delay_time = 500;}
 		RUN_ONCE;
 	}
 }
 
 void Key_17_MARCO(void)
 {
-	//此按键无法定义宏功能
+	//不可用
 }
 
 void Key_18_MARCO(void)
 {
-	if(key_state == 2)
+	if(key_state == 0)
 	{
-		NKROKeyboard.press(KEY_LEFT_CTRL);
-		NKROKeyboard.press(KEY_C);
-		NKROKeyboard.releaseAll();
+		NKROKeyboard.press(KEY_RETURN);
+		NKROKeyboard.release(KEY_RETURN);
 		RUN_ONCE;
 	}
 }
 
 void Key_19_MARCO(void)
 {
-	if(key_state == 2)
-	{
-		NKROKeyboard.press(KEY_LEFT_CTRL);
-		NKROKeyboard.press(KEY_V);
-		NKROKeyboard.releaseAll();
-		RUN_ONCE;
-	}
+	
 }
 
 void Key_20_MARCO(void)
 {
-	if(key_state == 2)
+	if(key_state == 0)
 	{
-		NKROKeyboard.press(KEY_LEFT_CTRL);
-		NKROKeyboard.press(KEY_S);
-		NKROKeyboard.releaseAll();
-		RUN_ONCE;
+		NKROKeyboard.press(KEY_ESC);
+		while(macro_flag == 20)
+			{Scheduler.delay(50);}
+		NKROKeyboard.release(KEY_ESC);
 	}
 }

@@ -3,6 +3,8 @@
 
 extern int macro_flag;
 
+long get_macro_delay(void);
+
 void Macro_Switch(void);
 void Key_1_MARCO(void);
 void Key_2_MARCO(void);

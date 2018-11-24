@@ -32,6 +32,7 @@ void setup()
 	NKROKeyboard.begin(); //初始化键盘
 	Consumer.begin(); //初始化多媒体控制器
 	BootKeyboard.begin(); //初始化主机状态控制器
+	Mouse.begin(); //初始化鼠标控制器，用于模拟鼠标点击功能
 	strip.setBrightness(BRIGHTNESS);
 
 	last_press_systime = millis(); //初始化系统时间
