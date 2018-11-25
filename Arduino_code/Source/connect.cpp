@@ -11,10 +11,10 @@ void connect_event(void)
     {
         int msg = 0;
         msg = Serial.read();
-        Serial.println(msg);
         if(msg >= 0 && msg < 20)
         {
             key_state = msg;
+            Serial.print(msg);
             OLED_Display();
         }
         else
