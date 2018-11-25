@@ -84,18 +84,17 @@ void OLED_Display(void)
 		oled.println("--");
 		// 组织第三行按键层显示
 		oled.print("KEY :");
+		oled.print(key_state + 1);
+		if(key_state < 9)
+			{oled.print("--  ");}
+		else
+			{oled.print("-  ");}
 		if(FN_flag)
 		{
-			oled.print(key_state + 1);
-			oled.println("--  FnEnable");
+			oled.println("FnEnable");
 		}
 		else
 		{
-			oled.print(key_state + 1);
-			if(key_state < 9)
-				{oled.print("--  ");}
-			else
-				{oled.print("-  ");}
 			switch(key_state) //根据键盘层不同，在第三行第二格位置显示一些默认信息
 			{
 				case 0 : 
