@@ -1,4 +1,4 @@
-# RGB Keyboard V3.2版本
+# RGB Keyboard V4.0版本
 
 ## Profile：
 使用Pro micro（ATMEGA32U4）作为主控制作的20键全宏定义键盘，具有RGB功能，单引脚控制WS2811/WS2812 RGB灯带，可以定义矩阵键盘及RGB控制IO。
@@ -45,6 +45,15 @@ https://github.com/fabriceo/SCoop
 https://github.com/mathertel/OneButton
 
 ## Version History:
+
+### V4.0
+1. 没别的，桌面软件写好了，上世纪的界面，代码乱的一比，我也看不懂为啥没有bug，调整了一些通信部分的bug就随便搓了个界面，用的Qt库，代码见*Qt_code*文件夹
+2. 上传编译好的桌面软件，可以直接用，我保证没有病毒
+
+### V3.3
+1. 删除了一部分不需要存在的代码
+2. 修改了串口功能，增加了回报设置是否成功的功能
+3. 桌面通信软件核心功能实现，正在测试
 
 ### V3.2
 1. 修正了一些OLED显示的bug

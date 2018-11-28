@@ -61,35 +61,26 @@ void Macro_Switch(void)
  */
 void Key_1_MARCO(void)
 {
-	if(key_state == 0)
-	{
-		Consumer.write(MEDIA_VOLUME_MUTE);
-		RUN_ONCE;
-	}
+	Consumer.write(MEDIA_VOLUME_MUTE);
+	RUN_ONCE;
 }
 
 void Key_2_MARCO(void)
 {
-	if(key_state == 0)
-	{
-		Consumer.press(MEDIA_VOLUME_DOWN);
-		while(macro_flag == 12)
-			{Scheduler.delay(50);}
-		Consumer.release(MEDIA_VOLUME_DOWN);
-		RUN_ONCE;
-	}
+	Consumer.press(MEDIA_VOLUME_DOWN);
+	while(macro_flag == 2)
+		{Scheduler.delay(50);}
+	Consumer.release(MEDIA_VOLUME_DOWN);
+	RUN_ONCE;
 }
 
 void Key_3_MARCO(void)
 {
-	if(key_state == 0)
-	{	
-		Consumer.press(MEDIA_VOLUME_UP);
-		while(macro_flag == 8)
-			{Scheduler.delay(50);}
-		Consumer.release(MEDIA_VOLUME_UP);
-		RUN_ONCE;
-	}
+	Consumer.press(MEDIA_VOLUME_UP);
+	while(macro_flag == 3)
+		{Scheduler.delay(50);}
+	Consumer.release(MEDIA_VOLUME_UP);
+	RUN_ONCE;
 }
 
 void Key_4_MARCO(void)
@@ -109,7 +100,7 @@ void Key_6_MARCO(void)
 
 void Key_7_MARCO(void)
 {
-	if(key_state == 0)
+	if(key_state == 1)
 	{	
 		OLED_flag = 1;
 		NKROKeyboard.press(KEY_LEFT_CTRL);
@@ -130,7 +121,12 @@ void Key_8_MARCO(void)
 
 void Key_9_MARCO(void)
 {
-	
+	if(key_state == 1)
+	{
+		OLED_flag = 2;
+		Mouse.click();
+		Scheduler.delay(delay_time);
+	}
 }
 
 void Key_10_MARCO(void)
@@ -145,7 +141,7 @@ void Key_11_MARCO(void)
 
 void Key_12_MARCO(void)
 {
-	if(key_state == 0)
+	if(key_state == 1)
 	{	
 		delay_time = delay_time - 50;
 		if(delay_time <= 100)
@@ -156,12 +152,7 @@ void Key_12_MARCO(void)
 
 void Key_13_MARCO(void)
 {
-	if(key_state == 0)
-	{
-		OLED_flag = 2;
-		Mouse.click();
-		Scheduler.delay(delay_time);
-	}
+	
 }
 
 void Key_14_MARCO(void)
@@ -171,7 +162,7 @@ void Key_14_MARCO(void)
 
 void Key_15_MARCO(void)
 {
-	if(key_state == 0)
+	if(key_state == 1)
 	{
 		NKROKeyboard.write(KEY_5);
 		RUN_ONCE;
@@ -180,7 +171,7 @@ void Key_15_MARCO(void)
 
 void Key_16_MARCO(void)
 {
-	if(key_state == 0)
+	if(key_state == 1)
 	{	
 		delay_time = delay_time + 50;
 		if(delay_time >= 500)
@@ -196,7 +187,7 @@ void Key_17_MARCO(void)
 
 void Key_18_MARCO(void)
 {
-	if(key_state == 0)
+	if(key_state == 1)
 	{
 		NKROKeyboard.press(KEY_RETURN);
 		NKROKeyboard.release(KEY_RETURN);
@@ -211,11 +202,8 @@ void Key_19_MARCO(void)
 
 void Key_20_MARCO(void)
 {
-	if(key_state == 0)
-	{
-		NKROKeyboard.press(KEY_ESC);
-		while(macro_flag == 20)
-			{Scheduler.delay(50);}
-		NKROKeyboard.release(KEY_ESC);
-	}
+	NKROKeyboard.press(KEY_ESC);
+	while(macro_flag == 20)
+		{Scheduler.delay(50);}
+	NKROKeyboard.release(KEY_ESC);
 }

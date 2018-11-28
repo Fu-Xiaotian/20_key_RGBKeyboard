@@ -2,9 +2,6 @@
 
 //最后一次按键事件系统时间记录变量，用于计算键盘空闲时间
 unsigned long last_press_systime = 0;
-//独立按键识别变量
-int old_key_flag = 0;
-int key_flag = 0;
 //按键设置层状态变量
 bool key_set = false;
 //键盘层状态变量
@@ -28,6 +25,7 @@ void setup()
 	pinMode(MODE_KEY,INPUT);
 	LED_Init();	//初始化RGB
 	OLED_Init(); //初始化OLED
+	connect_init(); //初始化串口上位机链接
 	kpd.setDebounceTime(DEBOUNCETIME); //设置键盘消抖延时
 	NKROKeyboard.begin(); //初始化键盘
 	Consumer.begin(); //初始化多媒体控制器
@@ -62,16 +60,17 @@ void loop()
 	OLED_upload(); //当进出宏时更新OLED显示
 
 	mode.tick(); //监视独立按键
-	
 	yield();
 }
 
 /**
- * 线程2，用于处理宏
+ * 线程2，用于处理宏以及响应上位机串口信息
  */
 void loop2()
 {
-	Macro_Switch();
+	Macro_Switch(); //宏响应函数
+
+	connect_event(); //串口数据响应函数
 	yield();
 }
 
@@ -86,7 +85,6 @@ void short_button(void)
 		OLED_flag = 0;
 		macro_flag = 0;
 		FN_flag = false;
-		key_flag = 0;
 		//出入按键设置层
 		key_set = true;
 		//刷新设置
@@ -111,7 +109,6 @@ void long_button(void)
 		//控制变量全清
 		OLED_flag = 0;
 		macro_flag = 0;
-		key_flag = 0;
 		FN_flag = false;
 		if(led_set)
 		{

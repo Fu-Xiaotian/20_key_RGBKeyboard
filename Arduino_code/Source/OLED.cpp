@@ -97,9 +97,15 @@ void OLED_Display(void)
 		{
 			switch(key_state) //根据键盘层不同，在第三行第二格位置显示一些默认信息
 			{
-				case 0 : 
+				case 0 :
+				{
+					oled.println("DefaultK");
+				}
+				case 1 : 
+				{
 					oled.print("MAC :");
 					oled.println(get_macro_delay());
+				}
 				break;
 				default :
 					oled.println("--------");
