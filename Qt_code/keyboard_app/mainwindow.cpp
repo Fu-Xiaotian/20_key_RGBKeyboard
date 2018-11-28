@@ -40,6 +40,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QPalette pal = this->palette();
     pal.setBrush(backgroundRole(), QPixmap("background.jpg"));
     setPalette(pal);
+    //隐藏程序主窗口
+    this->hide();
 }
 
 MainWindow::~MainWindow()
@@ -621,7 +623,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *e)
 void MainWindow::on_Hide_button_clicked()
 {
     //隐藏程序主窗口
-        this->hide();
+    this->hide();
 }
 
 void MainWindow::on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason)
