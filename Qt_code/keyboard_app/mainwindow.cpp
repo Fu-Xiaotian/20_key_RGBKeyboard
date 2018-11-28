@@ -40,8 +40,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QPalette pal = this->palette();
     pal.setBrush(backgroundRole(), QPixmap("background.jpg"));
     setPalette(pal);
-    //隐藏程序主窗口
-    this->hide();
 }
 
 MainWindow::~MainWindow()
