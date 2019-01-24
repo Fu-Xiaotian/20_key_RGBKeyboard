@@ -22,7 +22,7 @@ void Key_N_Released(int KeyNum)
 				{FN_flag = false;}
 			if(macro_flag == KeyNum)
 			{
-				macro_flag = 0;
+				macro_flag = -1;
 				OLED_flag = 0;
 			}
 			NKROKeyboard.release(key_layer[key_state][KeyNum]);

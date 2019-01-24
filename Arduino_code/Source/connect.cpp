@@ -16,7 +16,7 @@ void connect_event(void)
         {
             //控制变量全清
 		    OLED_flag = 0;
-		    macro_flag = 0;
+		    macro_flag = -1;
 		    FN_flag = false;
             //设置按键层
             key_state = msg;
