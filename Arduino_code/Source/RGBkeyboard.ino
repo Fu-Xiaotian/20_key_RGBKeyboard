@@ -83,10 +83,10 @@ void short_button(void)
 	{
 		//控制变量全清
 		OLED_flag = 0;
-		macro_flag = 0;
+		macro_flag = -1;
 		FN_flag = false;
 		//出入按键设置层
-		key_set = true;
+		key_set = !key_set;
 		//刷新设置
 		OLED_Display();
 		//释放所有按键
@@ -108,7 +108,7 @@ void long_button(void)
 	{
 		//控制变量全清
 		OLED_flag = 0;
-		macro_flag = 0;
+		macro_flag = -1;
 		FN_flag = false;
 		if(led_set)
 		{

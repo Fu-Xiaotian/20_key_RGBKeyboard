@@ -3,11 +3,12 @@
 const byte ROWS = 4; //4行
 const byte COLS = 5; //5列
 char keys[ROWS][COLS] = {
+{0,4,8,12,16},
 {1,5,9,13,17},
 {2,6,10,14,18},
-{3,7,11,15,19},
-{4,8,12,16,20}
-};
+{3,7,11,15,19}
+}; //定义按键编号，编号定义时应当从0开始，顺序定义，不应空格
+#define MAX_KEY_NUM 19 //按键编号最大值，决定后面循环的次数
 byte rowPins[ROWS] = {21, 20, 19, 18}; //connect to the row pinouts of the kpd
 byte colPins[COLS] = {4, 5, 6, 7, 8}; //connect to the column pinouts of the kpd
 
@@ -24,7 +25,7 @@ unsigned long key_delay_time = 0;
  */
 bool KeyisPressed(char keyChar)
 {
-	for (byte i=0; i<20; i++) {
+	for (byte i=0; i<=MAX_KEY_NUM; i++) {
 		if ( kpd.key[i].kchar == keyChar ) {
 			if ( (kpd.key[i].kstate == PRESSED) && kpd.key[i].stateChanged )
 				return true;
@@ -40,7 +41,7 @@ bool KeyisPressed(char keyChar)
  */
 bool KeyisReleased(char keyChar)
 {
-	for (byte i=0; i<20; i++) {
+	for (byte i=0; i<=MAX_KEY_NUM; i++) {
 		if ( kpd.key[i].kchar == keyChar ) {
 			if ( (kpd.key[i].kstate == RELEASED) && kpd.key[i].stateChanged )
 				return true;
@@ -63,89 +64,23 @@ void key_scan(void)
 		/*
 		扫描按键按下
 		 */
-		if(KeyisPressed(1))
-			{Key_1_Preased();}
-		if(KeyisPressed(2))
-			{Key_2_Preased();}
-		if(KeyisPressed(3))
-			{Key_3_Preased();}
-		if(KeyisPressed(4))
-			{Key_4_Preased();}
-		if(KeyisPressed(5))
-			{Key_5_Preased();}
-		if(KeyisPressed(6))
-			{Key_6_Preased();}
-		if(KeyisPressed(7))
-			{Key_7_Preased();}
-		if(KeyisPressed(8))
-			{Key_8_Preased();}
-		if(KeyisPressed(9))
-			{Key_9_Preased();}
-		if(KeyisPressed(10))
-			{Key_10_Preased();}
-		if(KeyisPressed(11))
-			{Key_11_Preased();}
-		if(KeyisPressed(12))
-			{Key_12_Preased();}
-		if(KeyisPressed(13))
-			{Key_13_Preased();}
-		if(KeyisPressed(14))
-			{Key_14_Preased();}
-		if(KeyisPressed(15))
-			{Key_15_Preased();}
-		if(KeyisPressed(16))
-			{Key_16_Preased();}
-		if(KeyisPressed(17))
-			{Key_17_Preased();}
-		if(KeyisPressed(18))
-			{Key_18_Preased();}
-		if(KeyisPressed(19))
-			{Key_19_Preased();}
-		if(KeyisPressed(20))
-			{Key_20_Preased();}
+		for(int KeyNum = 0; KeyNum <= MAX_KEY_NUM; KeyNum++)
+		{
+			if(KeyisPressed(KeyNum))
+			{
+				Key_N_Preased(KeyNum);
+			}
+		}
 
 		/*
 		扫描按键抬起
 		 */
-		if(KeyisReleased(1))
-			{Key_1_Released();}
-		if(KeyisReleased(2))
-			{Key_2_Released();}
-		if(KeyisReleased(3))
-			{Key_3_Released();}
-		if(KeyisReleased(4))
-			{Key_4_Released();}
-		if(KeyisReleased(5))
-			{Key_5_Released();}
-		if(KeyisReleased(6))
-			{Key_6_Released();}
-		if(KeyisReleased(7))
-			{Key_7_Released();}
-		if(KeyisReleased(8))
-			{Key_8_Released();}
-		if(KeyisReleased(9))
-			{Key_9_Released();}
-		if(KeyisReleased(10))
-			{Key_10_Released();}
-		if(KeyisReleased(11))
-			{Key_11_Released();}
-		if(KeyisReleased(12))
-			{Key_12_Released();}
-		if(KeyisReleased(13))
-			{Key_13_Released();}
-		if(KeyisReleased(14))
-			{Key_14_Released();}
-		if(KeyisReleased(15))
-			{Key_15_Released();}
-		if(KeyisReleased(16))
-			{Key_16_Released();}
-		if(KeyisReleased(17))
-			{Key_17_Released();}
-		if(KeyisReleased(18))
-			{Key_18_Released();}
-		if(KeyisReleased(19))
-			{Key_19_Released();}
-		if(KeyisReleased(20))
-			{Key_20_Released();}
+		for(int KeyNum = 0; KeyNum <= MAX_KEY_NUM; KeyNum++)
+		{
+			if(KeyisReleased(KeyNum))
+			{
+				Key_N_Released(KeyNum);
+			}
+		}
 	}
 }

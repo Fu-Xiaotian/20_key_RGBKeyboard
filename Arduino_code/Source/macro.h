@@ -6,6 +6,7 @@ extern int macro_flag;
 long get_macro_delay(void);
 
 void Macro_Switch(void);
+void Key_0_MARCO(void);
 void Key_1_MARCO(void);
 void Key_2_MARCO(void);
 void Key_3_MARCO(void);
@@ -25,8 +26,7 @@ void Key_16_MARCO(void);
 void Key_17_MARCO(void);
 void Key_18_MARCO(void);
 void Key_19_MARCO(void);
-void Key_20_MARCO(void);
 
-#define RUN_ONCE macro_flag = 0
+#define RUN_ONCE macro_flag = -1
 
 #endif
