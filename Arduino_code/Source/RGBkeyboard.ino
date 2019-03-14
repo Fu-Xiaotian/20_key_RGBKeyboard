@@ -38,8 +38,8 @@ void setup()
 	EEPROM.get(LED_LAYER_ADD, led_layer); //读取用户设置
 	EEPROM.get(LED_BRIGHTNESS_ADD, led_brightness);
 
-	Scheduler.startLoop(loop2); //多线程使能
-	Scheduler.startLoop(LED);
+	Scheduler.startLoop(loop2, 128); //多线程使能
+	Scheduler.startLoop(LED, 128);
 
 	mode.attachClick(short_button); //mode按键识别
 	mode.attachPress(long_button);

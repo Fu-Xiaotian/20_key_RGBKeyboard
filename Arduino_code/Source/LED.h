@@ -1,6 +1,8 @@
 #ifndef __LED_H
 #define __LED_H
 
+#include "Setting.h"
+
 void LED_Init(void);
 bool LED_delay(unsigned long t);
 void setone(int R, int G, int B, int n);
@@ -14,7 +16,7 @@ void rainbowCycle(uint8_t wait);
 void rainbowPoint(uint8_t wait);
 uint32_t Wheel(byte WheelPos);
 
-extern bool led_enable[20];
+extern bool led_enable[LED_NUM];
 extern int led_brightness;
 
 #define IF_LED_LAYER_CHANGE if(led_layer != old_led_layer){	old_led_layer = led_layer;	OLED_Display();	break;	}
