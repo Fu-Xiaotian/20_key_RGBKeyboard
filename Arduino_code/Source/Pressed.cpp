@@ -22,7 +22,13 @@ void Key_N_Preased(int KeyNum)
 		{
 			if(key_layer[key_state][KeyNum] == KEY_FN)
 				{FN_flag = true;}
-			else if(FN_flag)
+			else if(
+					(FN_flag || key_layer[key_state][KeyNum] == KEY_MACRO)
+					&& key_layer[key_state][KeyNum] != KEY_LEFT_SHIFT
+					&& key_layer[key_state][KeyNum] != KEY_RIGHT_SHIFT
+					&& key_layer[key_state][KeyNum] != KEY_LEFT_CTRL
+					&& key_layer[key_state][KeyNum] != KEY_RIGHT_CTRL
+					)
 				{macro_flag = KeyNum;}
 			else
 				{NKROKeyboard.press(key_layer[key_state][KeyNum]);} //处理按键按下事件

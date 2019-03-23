@@ -1,4 +1,4 @@
-# RGB Keyboard V4.1版本
+# RGB Keyboard V4.2版本
 
 ## Profile：
 使用Pro micro（ATMEGA32U4）作为主控制作的20键全宏定义键盘，具有RGB功能，单引脚控制WS2811/WS2812 RGB灯带，可以定义矩阵键盘及RGB控制IO。
@@ -45,6 +45,12 @@ https://github.com/fabriceo/SCoop
 https://github.com/mathertel/OneButton
 
 ## Version History:
+
+### V4.2
+1. 修改了一些并没有什么卵用的BUG
+2. 现在可以将一个按键定义为宏直通型按键
+3. 现在在使用宏的时候可以正常使用修饰键了
+4. 以上功能主要为新键盘服务，新键盘固件编号将继承当前编号，但是会存放在新的GitHub中
 
 ### V4.1
 1. 对代码进行了简化，重构了按键事件响应逻辑，节约了20%的程序体积
